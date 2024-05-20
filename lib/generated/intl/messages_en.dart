@@ -22,7 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "Add": MessageLookupByLibrary.simpleMessage("Add"),
+        "Add": MessageLookupByLibrary.simpleMessage("Add&Edit"),
         "AddSubject": MessageLookupByLibrary.simpleMessage("Add Subject"),
         "AddyourAccounment": MessageLookupByLibrary.simpleMessage(
             "Please add the announcement you\n would like to announce to students"),
@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Email": MessageLookupByLibrary.simpleMessage("Email"),
         "English": MessageLookupByLibrary.simpleMessage("English"),
         "Feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
+        "ForgetPassword":
+            MessageLookupByLibrary.simpleMessage("ForgetPassword"),
         "Forgotpassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "Foster": MessageLookupByLibrary.simpleMessage(
@@ -67,7 +69,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Signin": MessageLookupByLibrary.simpleMessage("Sign in"),
         "Skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "Start": MessageLookupByLibrary.simpleMessage("Start"),
+        "Student": MessageLookupByLibrary.simpleMessage("Student"),
         "Survey": MessageLookupByLibrary.simpleMessage("Survey"),
+        "Teacher": MessageLookupByLibrary.simpleMessage("Teacher"),
         "TrackyourProgress":
             MessageLookupByLibrary.simpleMessage("Track your Progress"),
         "YourAbsence": MessageLookupByLibrary.simpleMessage("Your Absence"),

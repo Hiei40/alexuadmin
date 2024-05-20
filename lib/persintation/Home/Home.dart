@@ -1,13 +1,13 @@
-import 'package:alexuadmin/persintation/Home/AddAnouncment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../generated/l10n.dart';
+import '../Edit&Add/AddEdit.dart';
 import '../Help/Help.dart';
 import '../Settings/Settings.dart';
 import '../profile/profile_screen.dart';
 import '../subject/subject_screen.dart';
-import 'Announcment.dart';
+import 'Add Announcment.dart';
 import 'cubit/home_cubit.dart';
 import 'cubit/home_state.dart';
 import '../../../Model/HomeModel.dart'; // consistent import
@@ -19,8 +19,8 @@ class Admin extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> screens = [
       SubjectScreen(),
-      Announcment(),
       AddAnouncment(),
+      AddEdit(),
       Help(),
       Settings(),
     ];

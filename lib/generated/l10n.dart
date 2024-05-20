@@ -450,11 +450,41 @@ class S {
     );
   }
 
-  /// `Add`
+  /// `Add&Edit`
   String get Add {
     return Intl.message(
-      'Add',
+      'Add&Edit',
       name: 'Add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Student`
+  String get Student {
+    return Intl.message(
+      'Student',
+      name: 'Student',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Teacher`
+  String get Teacher {
+    return Intl.message(
+      'Teacher',
+      name: 'Teacher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ForgetPassword`
+  String get ForgetPassword {
+    return Intl.message(
+      'ForgetPassword',
+      name: 'ForgetPassword',
       desc: '',
       args: [],
     );

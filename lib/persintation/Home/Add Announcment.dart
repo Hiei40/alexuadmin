@@ -65,7 +65,7 @@ class AddAnouncment extends StatelessWidget {
               InkWell(
                 onTap: () {
                   if (AddAnouncment.text.isNotEmpty) {
-                    BlocProvider.of<HomeCubit>(context).Addannouncement(AddAnouncment.text);
+                    BlocProvider.of<HomeCubit>(context).addAnnouncement(AddAnouncment.text);
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => Admin()),

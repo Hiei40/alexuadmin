@@ -30,28 +30,16 @@ class HomeCubit extends Cubit<HomeState> {
 
 
   List<Announcement>data2 = [];
-  Future<void> announcement() async {
+  Future<void> addAnnouncement(String news) async {
     try {
-      QuerySnapshot announcement = await FirebaseFirestore.instance
-          .collection("Announcement")
-          .get();
-      data2.clear();
-
-      announcement.docs.forEach((element) {
-
-        data2.add(Announcement.fromJson(element.data() as Map<String, dynamic>));
+      final postCollection = FirebaseFirestore.instance.collection('Announcement');
+      await postCollection.add({
+        'Name': "Admin",
+        'News': news,
+        'Photo': 'https://firebasestorage.googleapis.com/v0/b/alexu-a9210.appspot.com/o/Admin-Profile-Vector-PNG-Clipart.png?alt=media&token=111f768b-7e41-4534-b7bd-4e1f46c69c14',
       });
     } catch (e) {
       emit(HomeError(error: e.toString()));
     }
-  }
-  void Addannouncement(String News) async {
-      final postCollection = FirebaseFirestore.instance.collection('Announcement');
-      await postCollection.add({
-        'Name': "Dr${FirebaseAuth.instance.currentUser?.displayName}",
-        "News":News,
-        "Photo":FirebaseAuth.instance.currentUser?.photoURL,
-      });
-
   }
 }

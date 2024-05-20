@@ -38,5 +38,8 @@
   "existingsubjects":"existing subjects",
   "AddyourAccounment":"Please add the announcement you\n would like to announce to students",
 "PleaseWrite": "Please Write Your Announcment",
-  "Add": "Add"
+  "Add": "Add&Edit",
+  "Student": "Student",
+  "Teacher": "Teacher",
+  "ForgetPassword":"ForgetPassword"
 }
