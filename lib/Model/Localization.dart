@@ -1,0 +1,1 @@
+enum LanguageEventEnums {InitialLanguage, ArabicLanguage, EnglishLanguage}
