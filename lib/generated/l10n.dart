@@ -489,6 +489,46 @@ class S {
       args: [],
     );
   }
+
+  /// `We sent a reset link to your email`
+  String get Wesentaresetlinktoyouremail {
+    return Intl.message(
+      'We sent a reset link to your email',
+      name: 'Wesentaresetlinktoyouremail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please insert an Email that you want to reset his Password`
+  String get PleaseinsertanEmailthatyouwanttoresethisPassword {
+    return Intl.message(
+      'Please insert an Email that you want to reset his Password',
+      name: 'PleaseinsertanEmailthatyouwanttoresethisPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get Name {
+    return Intl.message(
+      'Name',
+      name: 'Name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Account`
+  String get CreateTeacherAccount {
+    return Intl.message(
+      'Create Account',
+      name: 'CreateTeacherAccount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

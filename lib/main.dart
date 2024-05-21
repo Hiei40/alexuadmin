@@ -1,3 +1,4 @@
+import 'package:alexuadmin/persintation/Edit&Add/cubit/edit_add_cubit.dart';
 import 'package:alexuadmin/persintation/Help/Cubit/help_cubit.dart';
 import 'package:alexuadmin/persintation/Home/Home.dart';
 import 'package:alexuadmin/persintation/Home/cubit/home_cubit.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => ProfileCubit()),
         BlocProvider(create: (context)=>SubjectCubit()),
         BlocProvider(create: (context)=>HelpCubit()),
+        BlocProvider(create: (context)=>EditAddCubit()),
 
         BlocProvider(
           create: (context) =>

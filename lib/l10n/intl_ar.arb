@@ -42,7 +42,10 @@
   "Add": "أضافه و تعديل",
   "Student": "اضافه الطلاب",
 "Teacher": "اضافه اساتذه",
-  "ForgetPassword":"تغيير الباسورد"
+  "ForgetPassword":"تغيير الباسورد",
+  "Wesentaresetlinktoyouremail": "لقد أرسلنا رابط إعادة التعيين إلى بريدك الإلكتروني",
+  "PleaseinsertanEmailthatyouwanttoresethisPassword":"الرجاء إدخال البريد الإلكتروني الذي تريد إعادة تعيين كلمة المرور الخاصة به",
+"Name":"الاسم"
 
 
 

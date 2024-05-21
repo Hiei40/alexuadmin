@@ -26,7 +26,6 @@ class AddEdit extends StatelessWidget {
       AddStudent(),
       AddTeacher(),
       ForgetPassword(),
-
     ];
     return Scaffold(
       appBar: AppBar(

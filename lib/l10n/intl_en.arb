@@ -41,5 +41,10 @@
   "Add": "Add&Edit",
   "Student": "Student",
   "Teacher": "Teacher",
-  "ForgetPassword":"ForgetPassword"
+  "ForgetPassword":"ForgetPassword",
+  "Wesentaresetlinktoyouremail": "We sent a reset link to your email",
+  "PleaseinsertanEmailthatyouwanttoresethisPassword":"Please insert an Email that you want to reset his Password",
+"Name":"Name",
+  "CreateTeacherAccount": "Create Account"
+
 }

@@ -10,8 +10,7 @@ class AddStudent extends StatelessWidget {
     return Scaffold(
 
       appBar: AppBar(
-        title: Text(S.of(context).ForgetPassword),
-      ),
+        title:       Text(S.of(context).Student,)),
 
 
     );

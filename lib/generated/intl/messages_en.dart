@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Back": MessageLookupByLibrary.simpleMessage("Back"),
         "Connect_with_Peers":
             MessageLookupByLibrary.simpleMessage("Connect with Peers"),
+        "CreateTeacherAccount":
+            MessageLookupByLibrary.simpleMessage("Create Account"),
         "Effortlessly": MessageLookupByLibrary.simpleMessage(
             "Effortlessly enroll in your preferred courses. Say goodbye to long queues and paperwork!"),
         "Email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -50,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "Monitoryouracademic": MessageLookupByLibrary.simpleMessage(
             "Monitor your academic journey with real-time updates on grades,attendance,and more."),
+        "Name": MessageLookupByLibrary.simpleMessage("Name"),
         "Next": MessageLookupByLibrary.simpleMessage("Next"),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
         "Passwordisrequired":
@@ -58,6 +61,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please Write Your Announcment"),
         "Pleasecontact": MessageLookupByLibrary.simpleMessage(
             "Please contact\n your administrator to\n assist you in updating your login credentials "),
+        "PleaseinsertanEmailthatyouwanttoresethisPassword":
+            MessageLookupByLibrary.simpleMessage(
+                "Please insert an Email that you want to reset his Password"),
         "Pleasewrite": MessageLookupByLibrary.simpleMessage(
             "Please write your specific complaint or thing you would like help with here"),
         "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
@@ -74,6 +80,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Teacher": MessageLookupByLibrary.simpleMessage("Teacher"),
         "TrackyourProgress":
             MessageLookupByLibrary.simpleMessage("Track your Progress"),
+        "Wesentaresetlinktoyouremail": MessageLookupByLibrary.simpleMessage(
+            "We sent a reset link to your email"),
         "YourAbsence": MessageLookupByLibrary.simpleMessage("Your Absence"),
         "YourProgress": MessageLookupByLibrary.simpleMessage("Your Progress"),
         "YourSubject": MessageLookupByLibrary.simpleMessage("YourSubject"),

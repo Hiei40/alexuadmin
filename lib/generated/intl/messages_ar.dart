@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "Monitoryouracademic": MessageLookupByLibrary.simpleMessage(
             "راقب رحلتك الأكاديمية من خلال تحديثات فورية حول الدرجات والحضور وغير ذلك الكثير."),
+        "Name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "Next": MessageLookupByLibrary.simpleMessage("التالي"),
         "Password": MessageLookupByLibrary.simpleMessage("الرقم السري"),
         "Passwordisrequired":
@@ -58,6 +59,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "برجاء كتابه الاعلان الخاص بك"),
         "Pleasecontact": MessageLookupByLibrary.simpleMessage(
             "يرجى الاتصال بالمسؤول الخاص بك لمساعدتك في تحديث بيانات اعتماد تسجيل الدخول الخاصة بك."),
+        "PleaseinsertanEmailthatyouwanttoresethisPassword":
+            MessageLookupByLibrary.simpleMessage(
+                "الرجاء إدخال البريد الإلكتروني الذي تريد إعادة تعيين كلمة المرور الخاصة به"),
         "Pleasewrite": MessageLookupByLibrary.simpleMessage(
             "برجاء كتابه الشكوي الخاصه او الشي الذي تريد طلب المساعده فيه هنا"),
         "Profile": MessageLookupByLibrary.simpleMessage("الحساب الشخصي"),
@@ -74,6 +78,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Teacher": MessageLookupByLibrary.simpleMessage("اضافه اساتذه"),
         "TrackyourProgress":
             MessageLookupByLibrary.simpleMessage("تتبع التقدم المحرز الخاص بك"),
+        "Wesentaresetlinktoyouremail": MessageLookupByLibrary.simpleMessage(
+            "لقد أرسلنا رابط إعادة التعيين إلى بريدك الإلكتروني"),
         "YourAbsence": MessageLookupByLibrary.simpleMessage("الغياب الخاص بك "),
         "YourProgress":
             MessageLookupByLibrary.simpleMessage("التقدم المحرز الخاص بك"),
