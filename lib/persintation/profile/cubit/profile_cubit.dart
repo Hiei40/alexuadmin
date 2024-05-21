@@ -16,9 +16,6 @@ class ProfileCubit extends Cubit<ProfileState> {
   String ? getimage;
   addProfileImage()async{
     FilePickerResult? result = await FilePicker.platform.pickFiles();
-    // var formatter = new DateFormat('yyyy-MM-dd');
-    // var now = new DateTime.now();
-    // String formattedDate = formatter.format(now);
     if (result != null) {
       String fileName = result.files.first.path!;
       // Upload file
@@ -32,7 +29,7 @@ class ProfileCubit extends Cubit<ProfileState> {
           .getDownloadURL();
       FirebaseFirestore.instance
           .collection("Profile")
-          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .doc(FirebaseAuth.instance.currentUser!.photoURL)
           .update({"image":getimage!});
     }
     emit(AddImageMyProfileState());

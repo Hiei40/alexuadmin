@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../generated/l10n.dart';
+import 'ForgetPassword.dart';
 import 'cubit/edit_add_cubit.dart';
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -21,7 +22,7 @@ class ForgetPassword extends StatelessWidget {
       ),
       body: BlocConsumer<EditAddCubit, EditAddState>(
         listener: (BuildContext context, EditAddState state) {
-          if (state is ResetSucces) {
+          if (state is ResetSuccess) {
             showDialog(
               context: context,
               builder: (BuildContext context) {
@@ -90,7 +91,7 @@ class ForgetPassword extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      BlocProvider.of<EditAddCubit>(context).ForgetPassword(emailController.text);
+                      BlocProvider.of<EditAddCubit>(context).forgetPassword(emailController.text);
                     }
                   },
                   child: Container(

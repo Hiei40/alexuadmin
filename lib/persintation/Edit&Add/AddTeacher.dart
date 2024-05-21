@@ -1,10 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../generated/l10n.dart';
 import '../profile/widget/profile_card.dart';
+import 'cubit/edit_add_cubit.dart';
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
 class AddTeacher extends StatelessWidget {
@@ -18,10 +20,16 @@ class AddTeacher extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+
       appBar: AppBar(
         title: Text(S.of(context).Teacher),
       ),
-      body: Form(
+      body: BlocConsumer<EditAddCubit, EditAddState>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
+    return Form(
        key: _formKey,
         child: Column(
           children: [
@@ -31,7 +39,9 @@ class AddTeacher extends StatelessWidget {
                   radius:70,
                   child: Image.asset("Image/Human1.png",height: 50,width: 50,),
                 ),
-                Positioned(child: IconButton(onPressed: (){}, icon: Icon(Icons.camera_alt)),
+                Positioned(child: IconButton(onPressed: (){
+                  BlocProvider.of<EditAddCubit>(context).addProfileImage();
+                }, icon: Icon(Icons.camera_alt)),
                   right: 0,
                   bottom: 0,
 
@@ -113,7 +123,9 @@ class AddTeacher extends StatelessWidget {
 
                  ],
         ),
-      ),
+      );
+  },
+),
     );
   }
 }
