@@ -1,16 +1,18 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:meta/meta.dart';
+import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
-part 'edit_add_state.dart';
+import 'edit_add_state.dart';
 
 class EditAddCubit extends Cubit<EditAddState> {
   EditAddCubit() : super(EditAddInitial());
+
+  String? profileImageUrl;
 
   Future<void> forgetPassword(String email) async {
     try {
@@ -21,60 +23,93 @@ class EditAddCubit extends Cubit<EditAddState> {
     }
   }
 
-  Future<void> createAccount(String email, String password, String name,String Photo) async {
+  Future<UserCredential> createAccount(String email, String password, String name, String getimage, String department) async {
     try {
+      // Create user with email and password
       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      // Update the user's display name using the new method
+      // Upload image and get URL
+      String imageUrl = getimage.isEmpty ? '' : await _uploadImage(File(getimage));
+
+      // Update user profile in Firestore
       User? user = userCredential.user;
       if (user != null) {
         await user.updateDisplayName(name);
         await user.reload();
         user = FirebaseAuth.instance.currentUser;
-        print('User display name updated to: ${user!.displayName}');
+
+        await FirebaseFirestore.instance.collection("Profile").doc(user!.uid).set({
+          'name': name,
+          'user_type': "doctor",
+          'image': imageUrl,
+          'department': department,
+        }, SetOptions(merge: true));
       }
 
       emit(CreateAccountSuccess());
+
+      return userCredential; // Return the UserCredential object
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      } else {
-        print('Failed with error code: ${e.code}');
-        print(e.message);
-      }
+      print('FirebaseAuthException: ${e.code}, ${e.message}');
       emit(CreateAccountFailure(e.message));
+      throw e;
     } catch (e) {
-      print(e);
+      print('Exception: $e');
       emit(CreateAccountFailure(e.toString()));
-    }
-
-  }
-
-  String? getimage;
-
-  addProfileImage() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
-    if (result != null) {
-      String fileName = result.files.first.path!;
-      // Upload file
-      final pickedFile = File(fileName);
-      await FirebaseStorage.instance.ref('uploads/1').putFile(pickedFile);
-
-      getimage = await FirebaseStorage.instance
-          .ref('uploads/1')
-          .getDownloadURL();
-      FirebaseFirestore.instance
-          .collection("Profile")
-          .doc(FirebaseAuth.instance.currentUser!.photoURL)
-          .update({"image": getimage!});
+      throw e;
     }
   }
 
+  Future<String> _uploadImage(File imageFile) async {
+    try {
+      if (!imageFile.existsSync()) {
+        throw Exception('File does not exist: ${imageFile.path}');
+      }
 
+      final storageRef = FirebaseStorage.instance.ref().child('uploads/${imageFile.path.split('/').last}');
+      await storageRef.putFile(imageFile);
+      String downloadUrl = await storageRef.getDownloadURL();
+      print('Image uploaded successfully: $downloadUrl');
+      return downloadUrl;
+    } catch (e) {
+      print('Error uploading image: $e');
+      throw e;
+    }
+  }
+
+  Future<void> addProfileImage() async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles();
+      if (result != null) {
+        File pickedFile = File(result.files.first.path!);
+        String imageUrl = await _uploadImage(pickedFile);
+        profileImageUrl = imageUrl;
+        emit(ProfileImageSelected(imageUrl: imageUrl));
+
+        await FirebaseFirestore.instance
+            .collection("Profile")
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .update({"image": imageUrl});
+      }
+    } catch (e) {
+      print('Error adding profile image: $e');
+    }
+  }
+
+  Future<String> uploadImage(File file) async {
+    FirebaseStorage storage = FirebaseStorage.instance;
+    Reference ref = storage.ref().child("profile_images/${file.path.split('/').last}");
+    UploadTask uploadTask = ref.putFile(file);
+    TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
+    return await taskSnapshot.ref.getDownloadURL();
+  }
 }
-// emit(AddImageMyProfileState());
+
+class ProfileImageSelected extends EditAddState {
+  final String imageUrl;
+
+  ProfileImageSelected({required this.imageUrl});
+}

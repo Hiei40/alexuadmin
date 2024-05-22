@@ -34,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Connect with Peers"),
         "CreateTeacherAccount":
             MessageLookupByLibrary.simpleMessage("Create Account"),
+        "Department": MessageLookupByLibrary.simpleMessage("Department"),
+        "Departmentisempty":
+            MessageLookupByLibrary.simpleMessage("Department is empty"),
         "Effortlessly": MessageLookupByLibrary.simpleMessage(
             "Effortlessly enroll in your preferred courses. Say goodbye to long queues and paperwork!"),
         "Email": MessageLookupByLibrary.simpleMessage("Email"),

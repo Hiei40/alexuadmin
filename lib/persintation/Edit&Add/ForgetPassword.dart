@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../generated/l10n.dart';
 import 'ForgetPassword.dart';
 import 'cubit/edit_add_cubit.dart';
+import 'cubit/edit_add_state.dart';
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
 class ForgetPassword extends StatelessWidget {
@@ -21,7 +22,7 @@ class ForgetPassword extends StatelessWidget {
         title: Text(S.of(context).ForgetPassword),
       ),
       body: BlocConsumer<EditAddCubit, EditAddState>(
-        listener: (BuildContext context, EditAddState state) {
+        listener: (BuildContext context, state ) {
           if (state is ResetSuccess) {
             showDialog(
               context: context,

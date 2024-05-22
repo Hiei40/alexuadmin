@@ -45,6 +45,8 @@
   "Wesentaresetlinktoyouremail": "We sent a reset link to your email",
   "PleaseinsertanEmailthatyouwanttoresethisPassword":"Please insert an Email that you want to reset his Password",
 "Name":"Name",
-  "CreateTeacherAccount": "Create Account"
+  "CreateTeacherAccount": "Create Account",
+  "Department": "Department",
+  "Departmentisempty":"Department is empty"
 
 }

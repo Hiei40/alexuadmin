@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Back": MessageLookupByLibrary.simpleMessage("رجوع"),
         "Connect_with_Peers":
             MessageLookupByLibrary.simpleMessage("تواصل مع الاقران"),
+        "Department": MessageLookupByLibrary.simpleMessage("القسم"),
+        "Departmentisempty": MessageLookupByLibrary.simpleMessage("القسم فارغ"),
         "Effortlessly": MessageLookupByLibrary.simpleMessage(
             "سجل بسهولة في الدورات المفضلة لديك. قل وداعًا لطوابير الانتظار الطويلة والأعمال الورقية!"),
         "Email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني "),

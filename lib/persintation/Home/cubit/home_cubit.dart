@@ -42,4 +42,21 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HomeError(error: e.toString()));
     }
   }
+  Future<void> fetchAllSubject() async {
+    try {
+      emit(HomeDataLoaded());
+      QuerySnapshot AllSubject =await
+      FirebaseFirestore.instance.collection("HomeAdmin").get();
+
+      data.clear();
+
+      AllSubject.docs.forEach((element) {
+        // Explicitly cast element.data() to Map<String, dynamic>
+        data.add(Subject.fromJson(element.data() as Map<String, dynamic>));
+      });
+      emit(HomeDataSucceful());
+    } catch (e) {
+      emit(HomeError(error: e.toString()));
+    }
+  }
 }

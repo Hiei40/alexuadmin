@@ -529,6 +529,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Department`
+  String get Department {
+    return Intl.message(
+      'Department',
+      name: 'Department',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Department is empty`
+  String get Departmentisempty {
+    return Intl.message(
+      'Department is empty',
+      name: 'Departmentisempty',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
