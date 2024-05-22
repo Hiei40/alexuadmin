@@ -20,30 +20,30 @@ class EditAddCubit extends Cubit<EditAddState> {
       emit(ResetError(errorMessage: e.toString()));
     }
   }
-  final Reference _reference = FirebaseStorage.instance.ref();
-  Future<UserCredential> createAccount(String email, String password,
-      String name, String getimage, String department) async {
+  final Reference _reference = FirebaseStorage.instance.ref();Future<UserCredential> createAccount(String email, String password, String name, String getimage, String department) async {
     try {
       // Create user with email and password
-      UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
       String imageUrl = "";
-      if(SelectImage!=null){
+      if(SelectImage != null) {
         String fileName = basename(SelectImage!.path);
-        Reference fire=_reference.child('uploads/$fileName');
+        Reference fire = _reference.child('uploads/$fileName');
         UploadTask uploadTask = fire.putFile(SelectImage!);
         TaskSnapshot taskSnapshot = await uploadTask;
         imageUrl = await taskSnapshot.ref.getDownloadURL();
-   }
-      // Upload image and get URL
-      // await _uploadImage(File(getimage));
+      }
+
+      // Update user profile photo in Firebase Authentication
+      User? user = userCredential.user;
+      if (user != null) {
+        await user.updatePhotoURL(imageUrl);
+      }
 
       // Update user profile in Firestore
-      User? user = userCredential.user;
       if (user != null) {
         await user.updateDisplayName(name);
         await user.reload();
@@ -75,24 +75,7 @@ class EditAddCubit extends Cubit<EditAddState> {
     }
   }
 
-  Future<String> _uploadImage(File imageFile) async {
-    try {
-      if (!imageFile.existsSync()) {
-        throw Exception('File does not exist: ${imageFile.path}');
-      }
 
-      final storageRef = FirebaseStorage.instance
-          .ref()
-          .child('uploads/${imageFile.path.split('/').last}');
-      await storageRef.putFile(imageFile);
-      String downloadUrl = await storageRef.getDownloadURL();
-      print('Image uploaded successfully: $downloadUrl');
-      return downloadUrl;
-    } catch (e) {
-      print('Error uploading image: $e');
-      throw e;
-    }
-  }
   File? SelectImage;
   Future<void> addProfileImage() async {
     try {
