@@ -56,6 +56,7 @@ class EditAddCubit extends Cubit<EditAddState> {
           'name': name,
           'user_type': "doctor",
           'image': imageUrl,
+          'email':email,
           'department': department,
         }, SetOptions(merge: true));
       }

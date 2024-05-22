@@ -20,9 +20,13 @@ class AddTeacher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    nameController.clear();
+    emailController.clear();
+    passwordController.clear();
+    departmentController.clear();
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-      
+
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).Teacher),
@@ -57,7 +61,16 @@ class AddTeacher extends StatelessWidget {
   builder: (context, state) {
     return CircleAvatar(
               radius: 70,
-               child:Cubit.SelectImage!=null?Image.file(Cubit.SelectImage!):Image.network("https://firebasestorage.googleapis.com/v0/b/alexu-a9210.appspot.com/o/Human1.png?alt=media&token=2d11398d-3864-419b-a260-3bf885663daa")
+      child: Cubit.SelectImage != null
+          ? CircleAvatar(
+        backgroundImage: FileImage(Cubit.SelectImage!),
+        radius: 70, // Adjust the radius as needed
+      )
+          : CircleAvatar(
+        backgroundImage: NetworkImage(
+            "https://firebasestorage.googleapis.com/v0/b/alexu-a9210.appspot.com/o/Human1.png?alt=media&token=2d11398d-3864-419b-a260-3bf885663daa"),
+        radius: 25, // Adjust the radius as needed
+      ),
                // profileImageUrl != null
                //     ? FileImage(File(profileImageUrl))
                //     : const AssetImage("Image/Human1.png") ,
