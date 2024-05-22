@@ -22,7 +22,7 @@ class AddTeacher extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
+      
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).Teacher),
@@ -40,6 +40,7 @@ class AddTeacher extends StatelessWidget {
           }
         },
         builder: (context, state) {
+      var Cubit=BlocProvider.of<EditAddCubit>(context);
           String? profileImageUrl;
           if (state is ProfileImageSelected) {
             profileImageUrl = state.imageUrl;
@@ -52,12 +53,17 @@ class AddTeacher extends StatelessWidget {
                 children: [
                   Stack(
                     children: [
-                      CircleAvatar(
-                        radius: 70,
-                        backgroundImage: profileImageUrl != null
-                            ? FileImage(File(profileImageUrl))
-                            : AssetImage("Image/Human1.png") as ImageProvider,
-                      ),
+              BlocBuilder<EditAddCubit, EditAddState>(
+  builder: (context, state) {
+    return CircleAvatar(
+              radius: 70,
+               child:Cubit.SelectImage!=null?Image.file(Cubit.SelectImage!):Image.network("https://firebasestorage.googleapis.com/v0/b/alexu-a9210.appspot.com/o/Human1.png?alt=media&token=2d11398d-3864-419b-a260-3bf885663daa")
+               // profileImageUrl != null
+               //     ? FileImage(File(profileImageUrl))
+               //     : const AssetImage("Image/Human1.png") ,
+              );
+  },
+),
                       Positioned(
                         right: 0,
                         bottom: 0,
@@ -133,7 +139,7 @@ class AddTeacher extends StatelessWidget {
                             emailController.text,
                             passwordController.text,
                             nameController.text,
-                            profileImageUrl ?? '',
+                            profileImageUrl ??"" ,
                             departmentController.text,
                           );
                         } catch (error) {

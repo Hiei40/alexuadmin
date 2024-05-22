@@ -3,16 +3,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:meta/meta.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-
+import 'package:path/path.dart';
 import 'edit_add_state.dart';
 
 class EditAddCubit extends Cubit<EditAddState> {
   EditAddCubit() : super(EditAddInitial());
 
-  String? profileImageUrl;
 
   Future<void> forgetPassword(String email) async {
     try {
@@ -22,17 +20,27 @@ class EditAddCubit extends Cubit<EditAddState> {
       emit(ResetError(errorMessage: e.toString()));
     }
   }
-
-  Future<UserCredential> createAccount(String email, String password, String name, String getimage, String department) async {
+  final Reference _reference = FirebaseStorage.instance.ref();
+  Future<UserCredential> createAccount(String email, String password,
+      String name, String getimage, String department) async {
     try {
       // Create user with email and password
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
+      String imageUrl = "";
+      if(SelectImage!=null){
+        String fileName = basename(SelectImage!.path);
+        Reference fire=_reference.child('uploads/$fileName');
+        UploadTask uploadTask = fire.putFile(SelectImage!);
+        TaskSnapshot taskSnapshot = await uploadTask;
+        imageUrl = await taskSnapshot.ref.getDownloadURL();
+   }
       // Upload image and get URL
-      String imageUrl = getimage.isEmpty ? '' : await _uploadImage(File(getimage));
+      // await _uploadImage(File(getimage));
 
       // Update user profile in Firestore
       User? user = userCredential.user;
@@ -41,7 +49,10 @@ class EditAddCubit extends Cubit<EditAddState> {
         await user.reload();
         user = FirebaseAuth.instance.currentUser;
 
-        await FirebaseFirestore.instance.collection("Profile").doc(user!.uid).set({
+        await FirebaseFirestore.instance
+            .collection("Profile")
+            .doc(user!.uid)
+            .set({
           'name': name,
           'user_type': "doctor",
           'image': imageUrl,
@@ -69,7 +80,9 @@ class EditAddCubit extends Cubit<EditAddState> {
         throw Exception('File does not exist: ${imageFile.path}');
       }
 
-      final storageRef = FirebaseStorage.instance.ref().child('uploads/${imageFile.path.split('/').last}');
+      final storageRef = FirebaseStorage.instance
+          .ref()
+          .child('uploads/${imageFile.path.split('/').last}');
       await storageRef.putFile(imageFile);
       String downloadUrl = await storageRef.getDownloadURL();
       print('Image uploaded successfully: $downloadUrl');
@@ -79,21 +92,20 @@ class EditAddCubit extends Cubit<EditAddState> {
       throw e;
     }
   }
-
+  File? SelectImage;
   Future<void> addProfileImage() async {
     try {
-      FilePickerResult? result = await FilePicker.platform.pickFiles();
-      if (result != null) {
-        File pickedFile = File(result.files.first.path!);
-        String imageUrl = await _uploadImage(pickedFile);
-        profileImageUrl = imageUrl;
-        emit(ProfileImageSelected(imageUrl: imageUrl));
+      emit(Profileloading());
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image != null) {
+        SelectImage = File(image.path) ;
 
-        await FirebaseFirestore.instance
-            .collection("Profile")
-            .doc(FirebaseAuth.instance.currentUser!.uid)
-            .update({"image": imageUrl});
+
+
+
       }
+      emit(ProfileSucces());
+
     } catch (e) {
       print('Error adding profile image: $e');
     }
@@ -101,15 +113,12 @@ class EditAddCubit extends Cubit<EditAddState> {
 
   Future<String> uploadImage(File file) async {
     FirebaseStorage storage = FirebaseStorage.instance;
-    Reference ref = storage.ref().child("profile_images/${file.path.split('/').last}");
+    Reference ref =
+        storage.ref().child("profile_images/${file.path.split('/').last}");
     UploadTask uploadTask = ref.putFile(file);
     TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
     return await taskSnapshot.ref.getDownloadURL();
   }
 }
 
-class ProfileImageSelected extends EditAddState {
-  final String imageUrl;
 
-  ProfileImageSelected({required this.imageUrl});
-}

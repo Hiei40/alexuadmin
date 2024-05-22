@@ -20,3 +20,11 @@ class CreateAccountFailure extends EditAddState {
 
   CreateAccountFailure(this.errorMessage);
 }
+class Profileloading extends EditAddState {}
+
+class ProfileSucces extends EditAddState{}
+class ProfileImageSelected extends EditAddState {
+  final String imageUrl;
+
+  ProfileImageSelected({required this.imageUrl});
+}
