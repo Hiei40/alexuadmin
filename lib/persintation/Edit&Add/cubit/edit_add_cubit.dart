@@ -7,17 +7,15 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:path/path.dart';
 import 'edit_add_state.dart';
-import 'package:aws_rekognition_api/rekognition-2016-06-27.dart'as aws;
+import 'package:aws_rekognition_api/rekognition-2016-06-27.dart' as aws;
+
 class EditAddCubit extends Cubit<EditAddState> {
   EditAddCubit() : super(EditAddInitial());
-  final service = aws.Rekognition(region: 'eu-west-1',
+  final service = aws.Rekognition(
+      region: 'eu-west-1',
       credentials: aws.AwsClientCredentials(
-          accessKey:"AKIA3FLDYQCRDUEBFL4X" ,
-          secretKey:"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"
-
-      )
-  );
-////
+          accessKey: "AKIA3FLDYQCRDUEBFL4X",
+          secretKey: "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"));
   Future<void> forgetPassword(String email) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
@@ -26,17 +24,20 @@ class EditAddCubit extends Cubit<EditAddState> {
       emit(ResetError(errorMessage: e.toString()));
     }
   }
+
   final Reference _reference = FirebaseStorage.instance.ref();
-  Future<UserCredential> createTeacherAccount(String email, String password, String name, String getimage, String department) async {
+  Future<UserCredential> createAccount(String email, String password,
+      String name, String getimage, String department) async {
     try {
       // Create user with email and password
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
       String imageUrl = "";
-      if(SelectImage != null) {
+      if (SelectImage != null) {
         String fileName = basename(SelectImage!.path);
         Reference fire = _reference.child('uploads/$fileName');
         UploadTask uploadTask = fire.putFile(SelectImage!);
@@ -63,7 +64,7 @@ class EditAddCubit extends Cubit<EditAddState> {
           'name': name,
           'user_type': "doctor",
           'image': imageUrl,
-          'email':email,
+          'email': email,
           'department': department,
         }, SetOptions(merge: true));
       }
@@ -81,22 +82,26 @@ class EditAddCubit extends Cubit<EditAddState> {
       throw e;
     }
   }
-  void clearProfileImage() {
-    SelectImage = null;
-    emit(ClearPhoto()); // Emit initial state to reflect the change
-  }
-  Future<UserCredential> createStudentAccount(String email, String password, String name, String getimage, String department,int id) async {
+
+  Future<UserCredential> createStudentAccount(
+      String email,
+      String password,
+      String name,
+      String getimage,
+      String department,
+      int id,
+      String selectedYear) async {
     try {
       // Create user with email and password
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-
       String imageUrl = "";
-      String? FaceID="";
-      if(SelectImage != null) {
+      String? faceID = "";
+      if (SelectImage != null) {
         String fileName = basename(SelectImage!.path);
         Reference fire = _reference.child('uploads/$fileName');
         UploadTask uploadTask = fire.putFile(SelectImage!);
@@ -105,8 +110,10 @@ class EditAddCubit extends Cubit<EditAddState> {
         var bytes = await SelectImage?.readAsBytes();
 
         final res = await service.indexFaces(
-            collectionId: "students", image: aws.Image(bytes: bytes));
-        FaceID=res.faceRecords?.first.face?.faceId??"";
+          collectionId: "students",
+          image: aws.Image(bytes: bytes),
+        );
+        faceID = res.faceRecords?.first.face?.faceId ?? "";
       }
 
       // Update user profile photo in Firebase Authentication
@@ -127,17 +134,16 @@ class EditAddCubit extends Cubit<EditAddState> {
             .set({
           'name': name,
           'user_type': "Student",
-          'Year':"4",
-
-          "id":"id",
-          "Faceid":"$FaceID",
+          "id": id,
+          'Level': selectedYear,
+          "Faceid": faceID,
           'image': imageUrl,
-          'email':email,
+          'email': email,
           'department': department,
         }, SetOptions(merge: true));
-      }
 
-      emit(CreateAccountSuccess());
+        emit(CreateAccountSuccess());
+      }
 
       return userCredential; // Return the UserCredential object
     } on FirebaseAuthException catch (e) {
@@ -151,6 +157,11 @@ class EditAddCubit extends Cubit<EditAddState> {
     }
   }
 
+  void clearProfileImage() {
+    SelectImage = null;
+    emit(ProfileImageSelected(
+        imageUrl: "")); // Emit a state with an empty URL or null
+  }
 
   File? SelectImage;
   Future<void> addProfileImage() async {
@@ -158,19 +169,13 @@ class EditAddCubit extends Cubit<EditAddState> {
       emit(Profileloading());
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image != null) {
-        SelectImage = File(image.path) ;
-
-
-
-
+        SelectImage = File(image.path);
       }
       emit(ProfileSucces());
-
     } catch (e) {
       print('Error adding profile image: $e');
     }
   }
-
 
   Future<String> uploadImage(File file) async {
     FirebaseStorage storage = FirebaseStorage.instance;
@@ -180,9 +185,4 @@ class EditAddCubit extends Cubit<EditAddState> {
     TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
     return await taskSnapshot.ref.getDownloadURL();
   }
-
-
-
 }
-
-

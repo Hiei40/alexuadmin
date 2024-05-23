@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,34 +10,15 @@ import 'cubit/edit_add_cubit.dart';
 import 'cubit/edit_add_state.dart';
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-
-
-class AddTeacher extends StatefulWidget {
+class AddTeacher extends StatelessWidget {
   AddTeacher({super.key});
-
-  @override
-
-  State<AddTeacher> createState() => _AddTeacherState();
-}
-
-class _AddTeacherState extends State<AddTeacher> {
-
-  @override
   final TextEditingController nameController = TextEditingController();
-
   final TextEditingController emailController = TextEditingController();
-
   final TextEditingController passwordController = TextEditingController();
-
   final TextEditingController departmentController = TextEditingController();
 
-  final TextEditingController Cgpa = TextEditingController();
-
+  @override
   Widget build(BuildContext context) {
-    nameController.clear();
-    emailController.clear();
-    passwordController.clear();
-    departmentController.clear();
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
@@ -48,6 +32,13 @@ class _AddTeacherState extends State<AddTeacher> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Account created successfully')),
             );
+            // Clear the form and controllers
+            _formKey.currentState!.reset();
+            nameController.clear();
+            emailController.clear();
+            passwordController.clear();
+            departmentController.clear();
+            BlocProvider.of<EditAddCubit>(context).clearProfileImage(); // Add method to clear profile image in cubit
           } else if (state is CreateAccountFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Failed to create account: ${state.errorMessage}')),
@@ -55,7 +46,7 @@ class _AddTeacherState extends State<AddTeacher> {
           }
         },
         builder: (context, state) {
-      var Cubit=BlocProvider.of<EditAddCubit>(context);
+          var Cubit = BlocProvider.of<EditAddCubit>(context);
           String? profileImageUrl;
           if (state is ProfileImageSelected) {
             profileImageUrl = state.imageUrl;
@@ -68,26 +59,23 @@ class _AddTeacherState extends State<AddTeacher> {
                 children: [
                   Stack(
                     children: [
-              BlocBuilder<EditAddCubit, EditAddState>(
-  builder: (context, state) {
-    return CircleAvatar(
-              radius: 70,
-      child: Cubit.SelectImage != null
-          ? CircleAvatar(
-        backgroundImage: FileImage(Cubit.SelectImage!),
-        radius: 70, // Adjust the radius as needed
-      )
-          : CircleAvatar(
-        backgroundImage: NetworkImage(
-            "https://firebasestorage.googleapis.com/v0/b/alexu-a9210.appspot.com/o/Human1.png?alt=media&token=2d11398d-3864-419b-a260-3bf885663daa"),
-        radius: 25, // Adjust the radius as needed
-      ),
-               // profileImageUrl != null
-               //     ? FileImage(File(profileImageUrl))
-               //     : const AssetImage("Image/Human1.png") ,
-              );
-  },
-),
+                      BlocBuilder<EditAddCubit, EditAddState>(
+                        builder: (context, state) {
+                          return CircleAvatar(
+                            radius: 70,
+                            child: Cubit.SelectImage != null
+                                ? CircleAvatar(
+                              backgroundImage: FileImage(Cubit.SelectImage!),
+                              radius: 70,
+                            )
+                                : CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                  "https://firebasestorage.googleapis.com/v0/b/alexu-a9210.appspot.com/o/Human1.png?alt=media&token=2d11398d-3864-419b-a260-3bf885663daa"),
+                              radius: 25,
+                            ),
+                          );
+                        },
+                      ),
                       Positioned(
                         right: 0,
                         bottom: 0,
@@ -159,16 +147,15 @@ class _AddTeacherState extends State<AddTeacher> {
                     onTap: () async {
                       if (_formKey.currentState!.validate()) {
                         try {
-                          await BlocProvider.of<EditAddCubit>(context).createTeacherAccount(
+                          await BlocProvider.of<EditAddCubit>(context).createAccount(
                             emailController.text,
                             passwordController.text,
                             nameController.text,
-                            profileImageUrl ??"" ,
+                            profileImageUrl ?? "",
                             departmentController.text,
                           );
                         } catch (error) {
                           print("Error creating account: $error");
-                          // Handle error if needed
                         }
                       }
                     },

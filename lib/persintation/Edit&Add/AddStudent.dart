@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../generated/l10n.dart';
+import '../profile/widget/DropDownMenuYear.dart';
 import '../profile/widget/profile_card.dart';
 import 'cubit/edit_add_cubit.dart';
 import 'cubit/edit_add_state.dart';
@@ -32,16 +33,33 @@ class AddStudent extends StatelessWidget {
       body: BlocConsumer<EditAddCubit, EditAddState>(
         listener: (context, state) {
           if (state is CreateAccountSuccess) {
+            _formKey.currentState!.reset();
+            nameController.clear();
+            emailController.clear();
+            passwordController.clear();
+            idController.clear();
+            cgpaController.clear();
+            departmentController.clear();
+            cubit.clearProfileImage(); // Clear profile image in cubi
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Account created successfully')),
             );
           } else if (state is CreateAccountFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Failed to create account: ${state.errorMessage}')),
+              SnackBar(
+                  content:
+                      Text('Failed to create account: ${state.errorMessage}')),
             );
           }
         },
         builder: (context, state) {
+          var Cubit = BlocProvider.of<EditAddCubit>(context);
+          String? profileImageUrl;
+          String? selectedLevel;
+
+          if (state is ProfileImageSelected) {
+            profileImageUrl = state.imageUrl;
+          }
           return SingleChildScrollView(
             child: Form(
               key: _formKey,
@@ -55,14 +73,15 @@ class AddStudent extends StatelessWidget {
                             radius: 70,
                             child: cubit.SelectImage != null
                                 ? CircleAvatar(
-                              backgroundImage: FileImage(cubit.SelectImage!),
-                              radius: 70,
-                            )
+                                    backgroundImage:
+                                        FileImage(cubit.SelectImage!),
+                                    radius: 70,
+                                  )
                                 : CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  "https://firebasestorage.googleapis.com/v0/b/alexu-a9210.appspot.com/o/Human1.png?alt=media&token=2d11398d-3864-419b-a260-3bf885663daa"),
-                              radius: 25,
-                            ),
+                                    backgroundImage: NetworkImage(
+                                        "https://firebasestorage.googleapis.com/v0/b/alexu-a9210.appspot.com/o/Human1.png?alt=media&token=2d11398d-3864-419b-a260-3bf885663daa"),
+                                    radius: 25,
+                                  ),
                           );
                         },
                       ),
@@ -71,7 +90,8 @@ class AddStudent extends StatelessWidget {
                         bottom: 0,
                         child: IconButton(
                           onPressed: () {
-                            BlocProvider.of<EditAddCubit>(context).addProfileImage();
+                            BlocProvider.of<EditAddCubit>(context)
+                                .addProfileImage();
                           },
                           icon: Icon(Icons.camera_alt),
                         ),
@@ -90,22 +110,6 @@ class AddStudent extends StatelessWidget {
                       return null;
                     },
                     Controller: idController,
-                  ),
-                  ProfileCard(
-                    title: S.of(context).Name,
-                    body: S.of(context).Name,
-                    validator: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return "Empty";
-                      }
-                      final RegExp regex = RegExp(
-                          r'[0-9\u0600-\u06FF!@#$%^&*()_+=?><":}{\][|/-]+');
-                      if (regex.hasMatch(value)) {
-                        return "Invalid characters found";
-                      }
-                      return null;
-                    },
-                    Controller: nameController,
                   ),
                   ProfileCard(
                     title: S.of(context).Email,
@@ -132,6 +136,36 @@ class AddStudent extends StatelessWidget {
                       }
                     },
                     Controller: passwordController,
+                  ),
+                  ProfileDropDownMenu(
+                    title: 'Select Level',
+                    items: ['First', 'Second', 'Third', "Fourth"],
+                    selectedValue: 'First',
+                    onChanged: (String? newValue) {
+                      // Handle the change
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please select an option';
+                      }
+                      return null;
+                    },
+                  ),
+                  ProfileCard(
+                    title: S.of(context).Name,
+                    body: S.of(context).Name,
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Empty";
+                      }
+                      final RegExp regex = RegExp(
+                          r'[0-9\u0600-\u06FF!@#$%^&*()_+=?><":}{\][|/-]+');
+                      if (regex.hasMatch(value)) {
+                        return "Invalid characters found";
+                      }
+                      return null;
+                    },
+                    Controller: nameController,
                   ),
                   ProfileCard(
                     title: S.of(context).Department,
@@ -162,15 +196,28 @@ class AddStudent extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
-                        BlocProvider.of<EditAddCubit>(context).createStudentAccount(
+                        BlocProvider.of<EditAddCubit>(context)
+                            .createStudentAccount(
                           emailController.text,
                           passwordController.text,
                           nameController.text,
-                          '',
+                          profileImageUrl ?? '',
                           departmentController.text,
-                          idController.text as int,
-                        ).then((userCredential) {
-                          // Handle successful account creation
+                          int.parse(idController.text),
+                          selectedLevel ??
+                              '', // Pass the selectedLevel value here
+                        )
+                            .then((userCredential) {
+                          print({
+                            'name': nameController.text,
+                            'user_type': "Student",
+                            "id": int.parse(idController.text),
+                            'Level': selectedLevel,
+                            "Faceid": "facceID",
+                            'image': profileImageUrl,
+                            'email': emailController.text,
+                            'department': departmentController.text,
+                          });
                         }).catchError((error) {
                           print("Error creating account: $error");
                           // Handle error if needed
@@ -182,7 +229,8 @@ class AddStudent extends StatelessWidget {
                         color: Color(0xff87CEEB),
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      height: (75 / height) * MediaQuery.of(context).size.height,
+                      height:
+                          (75 / height) * MediaQuery.of(context).size.height,
                       width: (300 / width) * MediaQuery.of(context).size.width,
                       alignment: Alignment.center,
                       child: Text(
