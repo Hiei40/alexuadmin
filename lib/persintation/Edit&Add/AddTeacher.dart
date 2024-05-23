@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,18 +5,31 @@ import '../../generated/l10n.dart';
 import '../profile/widget/profile_card.dart';
 import 'cubit/edit_add_cubit.dart';
 import 'cubit/edit_add_state.dart';
-
 final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-final TextEditingController nameController = TextEditingController();
-final TextEditingController emailController = TextEditingController();
-final TextEditingController passwordController = TextEditingController();
-final TextEditingController departmentController = TextEditingController();
-final TextEditingController Cgpa = TextEditingController();
 
-class AddTeacher extends StatelessWidget {
-  const AddTeacher({super.key});
+
+
+class AddTeacher extends StatefulWidget {
+  AddTeacher({super.key});
 
   @override
+
+  State<AddTeacher> createState() => _AddTeacherState();
+}
+
+class _AddTeacherState extends State<AddTeacher> {
+
+  @override
+  final TextEditingController nameController = TextEditingController();
+
+  final TextEditingController emailController = TextEditingController();
+
+  final TextEditingController passwordController = TextEditingController();
+
+  final TextEditingController departmentController = TextEditingController();
+
+  final TextEditingController Cgpa = TextEditingController();
+
   Widget build(BuildContext context) {
     nameController.clear();
     emailController.clear();

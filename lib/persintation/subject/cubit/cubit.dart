@@ -7,6 +7,13 @@ class SubjectCubit extends Cubit<SubjectState> {
   SubjectCubit() : super(SubjectInitial());
   static SubjectCubit get(context) => BlocProvider.of(context);
   List listSubject = [];
+  Future <void>Subject()async{
+
+
+
+  }
+
+
   Future<void> MyProfile() async {
     emit(EmptyState());
     await FirebaseFirestore.instance.collection("Profile")

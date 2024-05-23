@@ -81,8 +81,11 @@ class EditAddCubit extends Cubit<EditAddState> {
       throw e;
     }
   }
-
-  Future<UserCredential> createStudentAccount(String email, String password, String name, String getimage, String department) async {
+  void clearProfileImage() {
+    SelectImage = null;
+    emit(ClearPhoto()); // Emit initial state to reflect the change
+  }
+  Future<UserCredential> createStudentAccount(String email, String password, String name, String getimage, String department,int id) async {
     try {
       // Create user with email and password
       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -125,7 +128,8 @@ class EditAddCubit extends Cubit<EditAddState> {
           'name': name,
           'user_type': "Student",
           'Year':"4",
-          "id":"agasgag",
+
+          "id":"id",
           "Faceid":"$FaceID",
           'image': imageUrl,
           'email':email,

@@ -4,7 +4,6 @@ import 'package:meta/meta.dart';
 abstract class EditAddState {}
 
 class EditAddInitial extends EditAddState {}
-
 class ResetSuccess extends EditAddState {}
 
 class ResetError extends EditAddState {
@@ -28,3 +27,4 @@ class ProfileImageSelected extends EditAddState {
 
   ProfileImageSelected({required this.imageUrl});
 }
+class ClearPhoto extends EditAddState{}

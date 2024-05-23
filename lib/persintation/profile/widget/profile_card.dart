@@ -8,7 +8,7 @@ class ProfileCard extends StatelessWidget {
       {super.key,
       required this.title,
       required this.body,
-      required this.Controller, this.validator, this.onFieldSubmitted, this.onSaved});
+      required this.Controller, this.validator, this.onFieldSubmitted, this.onSaved,});
   final String? title;
   final String? body;
   final TextEditingController Controller;
