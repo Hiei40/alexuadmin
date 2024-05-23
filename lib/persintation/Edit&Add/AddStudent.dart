@@ -1,3 +1,4 @@
+import 'package:alexuadmin/persintation/Edit&Add/AddEdit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,11 +14,17 @@ class AddStudent extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController ID = TextEditingController();
+  final TextEditingController Cgpa = TextEditingController();
+
+
   final TextEditingController departmentController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    var Cubit=BlocProvider.of<EditAddCubit>(context);
+
     return Scaffold(
       appBar: AppBar(
           title: Text(
@@ -42,19 +49,32 @@ class AddStudent extends StatelessWidget {
               children: [
                 Stack(
                   children: [
-                    CircleAvatar(
-                      radius: 70,
-                      child: Image.asset(
-                        "Image/Human1.png",
-                        height: 100,
-                        width: 100,
-                      ),
+                    BlocBuilder<EditAddCubit, EditAddState>(
+                      builder: (context, state) {
+                        return CircleAvatar(
+                          radius: 70,
+                          child: Cubit.SelectImage != null
+                              ? CircleAvatar(
+                            backgroundImage: FileImage(Cubit.SelectImage!),
+                            radius: 70, // Adjust the radius as needed
+                          )
+                              : CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                "https://firebasestorage.googleapis.com/v0/b/alexu-a9210.appspot.com/o/Human1.png?alt=media&token=2d11398d-3864-419b-a260-3bf885663daa"),
+                            radius: 25, // Adjust the radius as needed
+                          ),
+                          // profileImageUrl != null
+                          //     ? FileImage(File(profileImageUrl))
+                          //     : const AssetImage("Image/Human1.png") ,
+                        );
+                      },
                     ),
                     Positioned(
                       right: 0,
                       bottom: 0,
                       child: IconButton(
                         onPressed: () {
+                          BlocProvider.of<EditAddCubit>(context).addProfileImage();
                         },
                         icon: Icon(Icons.camera_alt),
                       ),
@@ -66,14 +86,12 @@ class AddStudent extends StatelessWidget {
                   body: "ID",
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return "Email is required";
-                    } else if (!value.contains("@")) {
-                      return "Email is not valid";
+                      return "Id is required";
                     } else {
                       return null;
                     }
                   },
-                  Controller: emailController,
+                  Controller: ID,
                 ),
                 ProfileCard(
                   title: S.of(context).Name,
@@ -135,19 +153,17 @@ class AddStudent extends StatelessWidget {
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Email is required";
-                    } else if (!value.contains("@")) {
-                      return "Email is not valid";
                     } else {
                       return null;
                     }
                   },
-                  Controller: emailController,
+                  Controller: Cgpa,
                 ),
                 SizedBox(height: 50),
                 InkWell(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      BlocProvider.of<EditAddCubit>(context).createAccount(
+                      BlocProvider.of<EditAddCubit>(context).createStudentAccount(
                         emailController.text,
                         passwordController.text,
                         nameController.text,

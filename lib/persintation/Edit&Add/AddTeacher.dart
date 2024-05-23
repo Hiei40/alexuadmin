@@ -14,6 +14,7 @@ final TextEditingController nameController = TextEditingController();
 final TextEditingController emailController = TextEditingController();
 final TextEditingController passwordController = TextEditingController();
 final TextEditingController departmentController = TextEditingController();
+final TextEditingController Cgpa = TextEditingController();
 
 class AddTeacher extends StatelessWidget {
   const AddTeacher({super.key});
@@ -148,7 +149,7 @@ class AddTeacher extends StatelessWidget {
                     onTap: () async {
                       if (_formKey.currentState!.validate()) {
                         try {
-                          await BlocProvider.of<EditAddCubit>(context).createAccount(
+                          await BlocProvider.of<EditAddCubit>(context).createTeacherAccount(
                             emailController.text,
                             passwordController.text,
                             nameController.text,
