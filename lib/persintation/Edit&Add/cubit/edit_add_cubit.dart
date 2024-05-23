@@ -17,7 +17,7 @@ class EditAddCubit extends Cubit<EditAddState> {
 
       )
   );
-
+////
   Future<void> forgetPassword(String email) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
