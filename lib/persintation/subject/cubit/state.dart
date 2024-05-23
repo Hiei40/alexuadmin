@@ -9,6 +9,14 @@ class SubjectInitial extends SubjectState {}
 class SubjectLoaded extends SubjectState {}
 
 class SubjectSuccefull extends SubjectState {}
+class SubjectError extends SubjectState {
+
+  final String error;
+
+  SubjectError({required this.error});
+
+
+}
 
 class MyProfileSuccefull extends SubjectState {}
 

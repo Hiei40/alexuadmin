@@ -10,9 +10,9 @@ import 'progress/Progress.dart';
 import 'survey/Survey.dart';
 
 class SubjectInfo extends StatelessWidget {
-  const SubjectInfo({super.key,required this.id,required this.name});
+  const SubjectInfo({super.key,required this.name,required this.Level});
   final String ? name;
-  final String ? id;
+ final String ?Level;
 
   @override
   Widget build(BuildContext context) {
