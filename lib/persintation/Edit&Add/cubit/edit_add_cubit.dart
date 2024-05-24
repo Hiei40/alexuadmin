@@ -14,8 +14,17 @@ class EditAddCubit extends Cubit<EditAddState> {
   final service = aws.Rekognition(
       region: 'eu-west-1',
       credentials: aws.AwsClientCredentials(
-          accessKey: "AKIA3FLDYQCRDUEBFL4X",
-          secretKey: "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"));
+          accessKey:
+
+
+          // "AKIA3FLDYQCRDUEBFL4X"
+          ,
+          secretKey:
+
+          // "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"
+
+
+      ));
   Future<void> forgetPassword(String email) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
