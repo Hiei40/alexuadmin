@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "AddyourAccounment": MessageLookupByLibrary.simpleMessage(
             "برجاء اضافه الاعلان الذي تود اعلانه للطلاب"),
         "Announcement": MessageLookupByLibrary.simpleMessage("إعلان"),
+        "AnonymousStudent": MessageLookupByLibrary.simpleMessage("طالب مجهول"),
         "Arabic": MessageLookupByLibrary.simpleMessage("العربيه"),
         "Attendance": MessageLookupByLibrary.simpleMessage("الحضور"),
         "Back": MessageLookupByLibrary.simpleMessage("رجوع"),
@@ -54,6 +55,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "راقب رحلتك الأكاديمية من خلال تحديثات فورية حول الدرجات والحضور وغير ذلك الكثير."),
         "Name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "Next": MessageLookupByLibrary.simpleMessage("التالي"),
+        "NoFeedBaclavailable":
+            MessageLookupByLibrary.simpleMessage("لا توجد تقييمات متاحه"),
+        "Nosurveysavailable":
+            MessageLookupByLibrary.simpleMessage("لا توجد استطلاعات متاحة."),
         "Password": MessageLookupByLibrary.simpleMessage("الرقم السري"),
         "Passwordisrequired":
             MessageLookupByLibrary.simpleMessage("الرقم السري ضروري"),
@@ -68,6 +73,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "برجاء كتابه الشكوي الخاصه او الشي الذي تريد طلب المساعده فيه هنا"),
         "Profile": MessageLookupByLibrary.simpleMessage("الحساب الشخصي"),
         "Progress": MessageLookupByLibrary.simpleMessage("تقدم"),
+        "ProgressandgradesforthisSubjectisempty":
+            MessageLookupByLibrary.simpleMessage(
+                "التقدم والدرجات لهذا الموضوع فارغة"),
+        "ProgressofStudent":
+            MessageLookupByLibrary.simpleMessage("مستوي الطالب"),
         "Seamless_Registration":
             MessageLookupByLibrary.simpleMessage("تسجيل سلس"),
         "Send": MessageLookupByLibrary.simpleMessage("أرسال"),
@@ -78,8 +88,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "Student": MessageLookupByLibrary.simpleMessage("اضافه الطلاب"),
         "Survey": MessageLookupByLibrary.simpleMessage("استطلاع"),
         "Teacher": MessageLookupByLibrary.simpleMessage("اضافه اساتذه"),
-        "TrackyourProgress":
-            MessageLookupByLibrary.simpleMessage("تتبع التقدم المحرز الخاص بك"),
+        "TrackyourProgress": MessageLookupByLibrary.simpleMessage(
+            "تتبع التقدم المحرز الخاص بالطلاب"),
         "Wesentaresetlinktoyouremail": MessageLookupByLibrary.simpleMessage(
             "لقد أرسلنا رابط إعادة التعيين إلى بريدك الإلكتروني"),
         "YourAbsence": MessageLookupByLibrary.simpleMessage("الغياب الخاص بك "),

@@ -17,6 +17,48 @@ class SubjectError extends SubjectState {
 
 
 }
+class SurveyLoaded extends SubjectState {}
+class SurveySuccefull extends SubjectState {}
+class SurveyError extends SubjectState {
+
+  final String error;
+
+  SurveyError({required this.error});
+
+
+}
+class FeedBackLoaded extends SubjectState {}
+class FeedBackSuccefull extends SubjectState {}
+class FeedBackError extends SubjectState {
+
+  final String error;
+
+  FeedBackError({required this.error});
+
+
+}
+class ProgressLoaded extends SubjectState {}
+class ProgressSuccefull extends SubjectState {}
+class ProgressError extends SubjectState {
+
+  final String error;
+
+  ProgressError({required this.error});
+
+
+}
+class ProgressProfileLoaded extends SubjectState {}
+class ProgressProfileSuccefull extends SubjectState {}
+class ProgressProfileError extends SubjectState {
+
+  final String error;
+
+  ProgressProfileError({required this.error});
+
+
+}
+
+
 
 class MyProfileSuccefull extends SubjectState {}
 

@@ -90,10 +90,10 @@ class S {
     );
   }
 
-  /// `Track your Progress`
+  /// `Track Progress of Students`
   String get TrackyourProgress {
     return Intl.message(
-      'Track your Progress',
+      'Track Progress of Students',
       name: 'TrackyourProgress',
       desc: '',
       args: [],
@@ -545,6 +545,56 @@ class S {
     return Intl.message(
       'Department is empty',
       name: 'Departmentisempty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No surveys available.`
+  String get Nosurveysavailable {
+    return Intl.message(
+      'No surveys available.',
+      name: 'Nosurveysavailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Anonymous Student`
+  String get AnonymousStudent {
+    return Intl.message(
+      'Anonymous Student',
+      name: 'AnonymousStudent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Progress of Student`
+  String get ProgressofStudent {
+    return Intl.message(
+      'Progress of Student',
+      name: 'ProgressofStudent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No FeedbacK available`
+  String get NoFeedBaclavailable {
+    return Intl.message(
+      'No FeedbacK available',
+      name: 'NoFeedBaclavailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Progress and grades for this Subject is empty`
+  String get ProgressandgradesforthisSubjectisempty {
+    return Intl.message(
+      'Progress and grades for this Subject is empty',
+      name: 'ProgressandgradesforthisSubjectisempty',
       desc: '',
       args: [],
     );

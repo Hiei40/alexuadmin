@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "AddyourAccounment": MessageLookupByLibrary.simpleMessage(
             "Please add the announcement you\n would like to announce to students"),
         "Announcement": MessageLookupByLibrary.simpleMessage("Announcement"),
+        "AnonymousStudent":
+            MessageLookupByLibrary.simpleMessage("Anonymous Student"),
         "Arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "Attendance": MessageLookupByLibrary.simpleMessage("Attendance"),
         "Back": MessageLookupByLibrary.simpleMessage("Back"),
@@ -57,6 +59,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Monitor your academic journey with real-time updates on grades,attendance,and more."),
         "Name": MessageLookupByLibrary.simpleMessage("Name"),
         "Next": MessageLookupByLibrary.simpleMessage("Next"),
+        "NoFeedBaclavailable":
+            MessageLookupByLibrary.simpleMessage("No FeedbacK available"),
+        "Nosurveysavailable":
+            MessageLookupByLibrary.simpleMessage("No surveys available."),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
         "Passwordisrequired":
             MessageLookupByLibrary.simpleMessage("Password is required"),
@@ -71,6 +77,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please write your specific complaint or thing you would like help with here"),
         "Profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "Progress": MessageLookupByLibrary.simpleMessage("Progress"),
+        "ProgressandgradesforthisSubjectisempty":
+            MessageLookupByLibrary.simpleMessage(
+                "Progress and grades for this Subject is empty"),
+        "ProgressofStudent":
+            MessageLookupByLibrary.simpleMessage("Progress of Student"),
         "Seamless_Registration":
             MessageLookupByLibrary.simpleMessage("Seamless Registration"),
         "Send": MessageLookupByLibrary.simpleMessage("Send"),
@@ -82,7 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Survey": MessageLookupByLibrary.simpleMessage("Survey"),
         "Teacher": MessageLookupByLibrary.simpleMessage("Teacher"),
         "TrackyourProgress":
-            MessageLookupByLibrary.simpleMessage("Track your Progress"),
+            MessageLookupByLibrary.simpleMessage("Track Progress of Students"),
         "Wesentaresetlinktoyouremail": MessageLookupByLibrary.simpleMessage(
             "We sent a reset link to your email"),
         "YourAbsence": MessageLookupByLibrary.simpleMessage("Your Absence"),

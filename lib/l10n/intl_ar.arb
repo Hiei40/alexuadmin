@@ -3,7 +3,7 @@
   "Foster": "تعزيز التعاون والبقاء على اتصال مع زملائك الطلاب. شارك الأفكار واطرح الأسئلة وقم ببناء شبكة داعمة.",
 "Seamless_Registration":"تسجيل سلس",
   "Effortlessly":"سجل بسهولة في الدورات المفضلة لديك. قل وداعًا لطوابير الانتظار الطويلة والأعمال الورقية!",
-  "TrackyourProgress": "تتبع التقدم المحرز الخاص بك",
+  "TrackyourProgress": "تتبع التقدم المحرز الخاص بالطلاب",
   "Monitoryouracademic":"راقب رحلتك الأكاديمية من خلال تحديثات فورية حول الدرجات والحضور وغير ذلك الكثير.",
   "Skip":"تخطي",
   "Start":"أبدا",
@@ -47,7 +47,13 @@
   "PleaseinsertanEmailthatyouwanttoresethisPassword":"الرجاء إدخال البريد الإلكتروني الذي تريد إعادة تعيين كلمة المرور الخاصة به",
 "Name":"الاسم",
   "Department": "القسم",
-  "Departmentisempty":"القسم فارغ"
+  "Departmentisempty":"القسم فارغ",
+  "Nosurveysavailable":"لا توجد استطلاعات متاحة.",
+  "NoFeedBaclavailable":"لا توجد تقييمات متاحه",
+  "AnonymousStudent": "طالب مجهول",
+  "ProgressofStudent":"مستوي الطالب",
+  "ProgressandgradesforthisSubjectisempty": "التقدم والدرجات لهذا الموضوع فارغة"
+
 
 
 }
