@@ -1,20 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../generated/l10n.dart';
+class ProfileDropDownMenu extends StatelessWidget {
+  const ProfileDropDownMenu({
+    super.key,
+    required this.title,
+    required this.items,
+    required this.selectedValue,
+    this.onChanged,
+    this.validator,
+  });
 
-class ProfileCard extends StatelessWidget {
-  const ProfileCard(
-      {super.key,
-      required this.title,
-      required this.body,
-      required this.Controller, this.validator, this.onFieldSubmitted, this.onSaved,});
   final String? title;
-  final String? body;
-  final TextEditingController Controller;
-  final  String? Function(String?)? validator;
-  final void Function(String)? onFieldSubmitted;
-  final void Function(String?)? onSaved;
+  final List<String> items;
+  final String? selectedValue;
+  final void Function(String?)? onChanged;
+  final String? Function(String?)? validator;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -48,16 +49,21 @@ class ProfileCard extends StatelessWidget {
             ),
             Center(
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.8446666666666667,
-                child: TextFormField(
-                  controller: Controller,
-                  onFieldSubmitted: onFieldSubmitted,
-                  onSaved: onSaved,
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: DropdownButtonFormField<String>(
+                  value: selectedValue,
+                  onChanged: onChanged,
                   validator: validator,
                   decoration: InputDecoration(
                     border: UnderlineInputBorder(),
-                    hintText: body,
+                    filled: false,
                   ),
+                  items: items.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
                 ),
               ),
             ),

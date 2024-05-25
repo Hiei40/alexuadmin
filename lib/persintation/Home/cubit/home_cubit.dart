@@ -42,7 +42,7 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HomeError(error: e.toString()));
     }
   }
-  Future<void> fetchAllSubject() async {
+  Future<void> fetchAll() async {
     try {
       emit(HomeDataLoaded());
       QuerySnapshot AllSubject =await

@@ -90,10 +90,10 @@ class S {
     );
   }
 
-  /// `Track your Progress`
+  /// `Track Progress of Students`
   String get TrackyourProgress {
     return Intl.message(
-      'Track your Progress',
+      'Track Progress of Students',
       name: 'TrackyourProgress',
       desc: '',
       args: [],
@@ -545,6 +545,186 @@ class S {
     return Intl.message(
       'Department is empty',
       name: 'Departmentisempty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No surveys available.`
+  String get Nosurveysavailable {
+    return Intl.message(
+      'No surveys available.',
+      name: 'Nosurveysavailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Anonymous Student`
+  String get AnonymousStudent {
+    return Intl.message(
+      'Anonymous Student',
+      name: 'AnonymousStudent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Progress of Student`
+  String get ProgressofStudent {
+    return Intl.message(
+      'Progress of Student',
+      name: 'ProgressofStudent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No FeedbacK available`
+  String get NoFeedBaclavailable {
+    return Intl.message(
+      'No FeedbacK available',
+      name: 'NoFeedBaclavailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Progress and grades for this Subject is empty`
+  String get ProgressandgradesforthisSubjectisempty {
+    return Intl.message(
+      'Progress and grades for this Subject is empty',
+      name: 'ProgressandgradesforthisSubjectisempty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Student available`
+  String get NoStudentavailable {
+    return Intl.message(
+      'No Student available',
+      name: 'NoStudentavailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subject`
+  String get Subject {
+    return Intl.message(
+      'Subject',
+      name: 'Subject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Year Work Grad`
+  String get YearWorkGrad {
+    return Intl.message(
+      'Year Work Grad',
+      name: 'YearWorkGrad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Med Term grad`
+  String get MedTermGrad {
+    return Intl.message(
+      'Med Term grad',
+      name: 'MedTermGrad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Final Grade`
+  String get FinalGrad {
+    return Intl.message(
+      'Final Grade',
+      name: 'FinalGrad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Grade`
+  String get AddGrade {
+    return Intl.message(
+      'Add Grade',
+      name: 'AddGrade',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Year Work Grad Required`
+  String get YearWorkGradRequired {
+    return Intl.message(
+      'Year Work Grad Required',
+      name: 'YearWorkGradRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid Year Work Grad`
+  String get InvalidYearWorkGrad {
+    return Intl.message(
+      'Invalid Year Work Grad',
+      name: 'InvalidYearWorkGrad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Med Term Grad Required`
+  String get MedTermGradRequired {
+    return Intl.message(
+      'Med Term Grad Required',
+      name: 'MedTermGradRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid Med Term Grad`
+  String get InvalidMedTermGrad {
+    return Intl.message(
+      'Invalid Med Term Grad',
+      name: 'InvalidMedTermGrad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Final Grad Required`
+  String get FinalGradRequired {
+    return Intl.message(
+      'Final Grad Required',
+      name: 'FinalGradRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid Final Grad`
+  String get InvalidFinalGrad {
+    return Intl.message(
+      'Invalid Final Grad',
+      name: 'InvalidFinalGrad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `GradeAddedSuccess`
+  String get GradeAddedSuccess {
+    return Intl.message(
+      'GradeAddedSuccess',
+      name: 'GradeAddedSuccess',
       desc: '',
       args: [],
     );

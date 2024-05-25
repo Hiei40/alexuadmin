@@ -3,7 +3,7 @@
   "Foster": "تعزيز التعاون والبقاء على اتصال مع زملائك الطلاب. شارك الأفكار واطرح الأسئلة وقم ببناء شبكة داعمة.",
 "Seamless_Registration":"تسجيل سلس",
   "Effortlessly":"سجل بسهولة في الدورات المفضلة لديك. قل وداعًا لطوابير الانتظار الطويلة والأعمال الورقية!",
-  "TrackyourProgress": "تتبع التقدم المحرز الخاص بك",
+  "TrackyourProgress": "تتبع التقدم المحرز الخاص بالطلاب",
   "Monitoryouracademic":"راقب رحلتك الأكاديمية من خلال تحديثات فورية حول الدرجات والحضور وغير ذلك الكثير.",
   "Skip":"تخطي",
   "Start":"أبدا",
@@ -47,7 +47,24 @@
   "PleaseinsertanEmailthatyouwanttoresethisPassword":"الرجاء إدخال البريد الإلكتروني الذي تريد إعادة تعيين كلمة المرور الخاصة به",
 "Name":"الاسم",
   "Department": "القسم",
-  "Departmentisempty":"القسم فارغ"
+  "Departmentisempty":"القسم فارغ",
+  "Nosurveysavailable":"لا توجد استطلاعات متاحة.",
+  "NoFeedBaclavailable":"لا توجد تقييمات متاحه",
+  "AnonymousStudent": "طالب مجهول",
+  "ProgressofStudent":"مستوي الطالب",
+  "ProgressandgradesforthisSubjectisempty": "التقدم والدرجات لهذا الموضوع فارغة",
+  "NoStudentavailable":"لا يوجد طالب متاح",
 
-
+"Subject":"الماده",
+  "YearWorkGrad": "درجات اعمال السنه",
+  "MedTermGrad": "درجات الميد ترم",
+  "FinalGrad":"درجه الامتحان النهائي",
+  "AddGrade":"اضافه الدرجات",
+  "YearWorkGradRequired": "درجه اعمال السنه مطلوبه",
+  "InvalidYearWorkGrad":"درجه اعمال السنه غير صحيحه",
+  "MedTermGradRequired": "درجه اعمال السنه مطلوبه",
+  "InvalidMedTermGrad": "درجه الميد ترم غير صحيحه",
+"FinalGradRequired": "الدرجه النهائيه مطلوبه",
+  "InvalidFinalGrad": "درجه النهائيه غير صحيحه",
+  "GradeAddedSuccess":"تم اضافه الدرجه بنجاح"
 }

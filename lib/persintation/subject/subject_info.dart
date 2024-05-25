@@ -1,22 +1,25 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/theme/color_manger/color_mange.dart';
 import '../../utils/theme/list/list.dart';
 import 'Attendance/Attendance.dart';
 import 'FeedBack/Feedback.dart';
+import 'cubit/cubit.dart';
 import 'progress/Progress.dart';
 import 'survey/Survey.dart';
 
 class SubjectInfo extends StatelessWidget {
-  const SubjectInfo({super.key,required this.id,required this.name});
+  const SubjectInfo({super.key,required this.name,required this.Level});
   final String ? name;
-  final String ? id;
+ final String ?Level;
 
   @override
   Widget build(BuildContext context) {
-    List Subject=[Attendance(),Feedbacks(),Progress(),Survey()];
+
+    List Subject=[Attendance(),Feedbacks(Subject: name.toString(),),Progress(level: Level.toString(), subject: name.toString(),),Survey(subject: name.toString(),)];
     return Scaffold(
       appBar:  AppBar(
         title: Text(name!),
