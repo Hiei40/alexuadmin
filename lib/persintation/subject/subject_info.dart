@@ -19,7 +19,7 @@ class SubjectInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    List Subject=[Attendance(),Feedbacks(Subject: name.toString(),),Progress(Level: Level.toString(), Subject: name.toString(),),Survey(subject: name.toString(),)];
+    List Subject=[Attendance(),Feedbacks(Subject: name.toString(),),Progress(level: Level.toString(), subject: name.toString(),),Survey(subject: name.toString(),)];
     return Scaffold(
       appBar:  AppBar(
         title: Text(name!),

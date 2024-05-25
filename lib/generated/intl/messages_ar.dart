@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Add": MessageLookupByLibrary.simpleMessage("أضافه و تعديل"),
+        "AddGrade": MessageLookupByLibrary.simpleMessage("اضافه الدرجات"),
         "AddSubject": MessageLookupByLibrary.simpleMessage("اضافه ماده"),
         "AddyourAccounment": MessageLookupByLibrary.simpleMessage(
             "برجاء اضافه الاعلان الذي تود اعلانه للطلاب"),
@@ -40,23 +41,40 @@ class MessageLookup extends MessageLookupByLibrary {
         "Email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني "),
         "English": MessageLookupByLibrary.simpleMessage("الانجليزيه"),
         "Feedback": MessageLookupByLibrary.simpleMessage("التقييم"),
+        "FinalGrad":
+            MessageLookupByLibrary.simpleMessage("درجه الامتحان النهائي"),
+        "FinalGradRequired":
+            MessageLookupByLibrary.simpleMessage("الدرجه النهائيه مطلوبه"),
         "ForgetPassword":
             MessageLookupByLibrary.simpleMessage("تغيير الباسورد"),
         "Forgotpassword":
             MessageLookupByLibrary.simpleMessage("هل نسيت الرقم السري"),
         "Foster": MessageLookupByLibrary.simpleMessage(
             "تعزيز التعاون والبقاء على اتصال مع زملائك الطلاب. شارك الأفكار واطرح الأسئلة وقم ببناء شبكة داعمة."),
+        "GradeAddedSuccess":
+            MessageLookupByLibrary.simpleMessage("تم اضافه الدرجه بنجاح"),
         "Help": MessageLookupByLibrary.simpleMessage("مساعده"),
         "Ifthereisanycomplaint": MessageLookupByLibrary.simpleMessage(
             "إذا كان هناك أي شكوى أو مساعدة ترغب في طلبها، يرجى كتابتها"),
+        "InvalidFinalGrad":
+            MessageLookupByLibrary.simpleMessage("درجه النهائيه غير صحيحه"),
+        "InvalidMedTermGrad":
+            MessageLookupByLibrary.simpleMessage("درجه الميد ترم غير صحيحه"),
+        "InvalidYearWorkGrad":
+            MessageLookupByLibrary.simpleMessage("درجه اعمال السنه غير صحيحه"),
         "Language": MessageLookupByLibrary.simpleMessage("اللغات"),
         "Logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "MedTermGrad": MessageLookupByLibrary.simpleMessage("درجات الميد ترم"),
+        "MedTermGradRequired":
+            MessageLookupByLibrary.simpleMessage("درجه اعمال السنه مطلوبه"),
         "Monitoryouracademic": MessageLookupByLibrary.simpleMessage(
             "راقب رحلتك الأكاديمية من خلال تحديثات فورية حول الدرجات والحضور وغير ذلك الكثير."),
         "Name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "Next": MessageLookupByLibrary.simpleMessage("التالي"),
         "NoFeedBaclavailable":
             MessageLookupByLibrary.simpleMessage("لا توجد تقييمات متاحه"),
+        "NoStudentavailable":
+            MessageLookupByLibrary.simpleMessage("لا يوجد طالب متاح"),
         "Nosurveysavailable":
             MessageLookupByLibrary.simpleMessage("لا توجد استطلاعات متاحة."),
         "Password": MessageLookupByLibrary.simpleMessage("الرقم السري"),
@@ -86,12 +104,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "Skip": MessageLookupByLibrary.simpleMessage("تخطي"),
         "Start": MessageLookupByLibrary.simpleMessage("أبدا"),
         "Student": MessageLookupByLibrary.simpleMessage("اضافه الطلاب"),
+        "Subject": MessageLookupByLibrary.simpleMessage("الماده"),
         "Survey": MessageLookupByLibrary.simpleMessage("استطلاع"),
         "Teacher": MessageLookupByLibrary.simpleMessage("اضافه اساتذه"),
         "TrackyourProgress": MessageLookupByLibrary.simpleMessage(
             "تتبع التقدم المحرز الخاص بالطلاب"),
         "Wesentaresetlinktoyouremail": MessageLookupByLibrary.simpleMessage(
             "لقد أرسلنا رابط إعادة التعيين إلى بريدك الإلكتروني"),
+        "YearWorkGrad":
+            MessageLookupByLibrary.simpleMessage("درجات اعمال السنه"),
+        "YearWorkGradRequired":
+            MessageLookupByLibrary.simpleMessage("درجه اعمال السنه مطلوبه"),
         "YourAbsence": MessageLookupByLibrary.simpleMessage("الغياب الخاص بك "),
         "YourProgress":
             MessageLookupByLibrary.simpleMessage("التقدم المحرز الخاص بك"),

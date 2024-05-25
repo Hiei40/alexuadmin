@@ -52,6 +52,18 @@
   "AnonymousStudent": "Anonymous Student",
   "ProgressofStudent":"Progress of Student",
   "NoFeedBaclavailable":"No FeedbacK available",
-  "ProgressandgradesforthisSubjectisempty": "Progress and grades for this Subject is empty"
-
+  "ProgressandgradesforthisSubjectisempty": "Progress and grades for this Subject is empty",
+"NoStudentavailable":"No Student available",
+  "Subject":"Subject",
+  "YearWorkGrad": "Year Work Grad",
+  "MedTermGrad": "Med Term grad",
+  "FinalGrad":"Final Grade",
+  "AddGrade":"Add Grade",
+  "YearWorkGradRequired":"Year Work Grad Required",
+"InvalidYearWorkGrad":"Invalid Year Work Grad",
+  "MedTermGradRequired": "Med Term Grad Required",
+  "InvalidMedTermGrad": "Invalid Med Term Grad",
+  "FinalGradRequired":"Final Grad Required",
+  "InvalidFinalGrad": "Invalid Final Grad",
+  "GradeAddedSuccess":"GradeAddedSuccess"
 }

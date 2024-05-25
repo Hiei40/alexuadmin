@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Add": MessageLookupByLibrary.simpleMessage("Add&Edit"),
+        "AddGrade": MessageLookupByLibrary.simpleMessage("Add Grade"),
         "AddSubject": MessageLookupByLibrary.simpleMessage("Add Subject"),
         "AddyourAccounment": MessageLookupByLibrary.simpleMessage(
             "Please add the announcement you\n would like to announce to students"),
@@ -44,23 +45,39 @@ class MessageLookup extends MessageLookupByLibrary {
         "Email": MessageLookupByLibrary.simpleMessage("Email"),
         "English": MessageLookupByLibrary.simpleMessage("English"),
         "Feedback": MessageLookupByLibrary.simpleMessage("Feedback"),
+        "FinalGrad": MessageLookupByLibrary.simpleMessage("Final Grade"),
+        "FinalGradRequired":
+            MessageLookupByLibrary.simpleMessage("Final Grad Required"),
         "ForgetPassword":
             MessageLookupByLibrary.simpleMessage("ForgetPassword"),
         "Forgotpassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "Foster": MessageLookupByLibrary.simpleMessage(
             "Foster collaboration and stay connected with your fellow students. Share insights, ask  questions, and build a supportive network."),
+        "GradeAddedSuccess":
+            MessageLookupByLibrary.simpleMessage("GradeAddedSuccess"),
         "Help": MessageLookupByLibrary.simpleMessage("Help"),
         "Ifthereisanycomplaint": MessageLookupByLibrary.simpleMessage(
             "If there is any complaint or assistance you would like to ask for, please write it down"),
+        "InvalidFinalGrad":
+            MessageLookupByLibrary.simpleMessage("Invalid Final Grad"),
+        "InvalidMedTermGrad":
+            MessageLookupByLibrary.simpleMessage("Invalid Med Term Grad"),
+        "InvalidYearWorkGrad":
+            MessageLookupByLibrary.simpleMessage("Invalid Year Work Grad"),
         "Language": MessageLookupByLibrary.simpleMessage("Language"),
         "Logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "MedTermGrad": MessageLookupByLibrary.simpleMessage("Med Term grad"),
+        "MedTermGradRequired":
+            MessageLookupByLibrary.simpleMessage("Med Term Grad Required"),
         "Monitoryouracademic": MessageLookupByLibrary.simpleMessage(
             "Monitor your academic journey with real-time updates on grades,attendance,and more."),
         "Name": MessageLookupByLibrary.simpleMessage("Name"),
         "Next": MessageLookupByLibrary.simpleMessage("Next"),
         "NoFeedBaclavailable":
             MessageLookupByLibrary.simpleMessage("No FeedbacK available"),
+        "NoStudentavailable":
+            MessageLookupByLibrary.simpleMessage("No Student available"),
         "Nosurveysavailable":
             MessageLookupByLibrary.simpleMessage("No surveys available."),
         "Password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -90,12 +107,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "Skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "Start": MessageLookupByLibrary.simpleMessage("Start"),
         "Student": MessageLookupByLibrary.simpleMessage("Student"),
+        "Subject": MessageLookupByLibrary.simpleMessage("Subject"),
         "Survey": MessageLookupByLibrary.simpleMessage("Survey"),
         "Teacher": MessageLookupByLibrary.simpleMessage("Teacher"),
         "TrackyourProgress":
             MessageLookupByLibrary.simpleMessage("Track Progress of Students"),
         "Wesentaresetlinktoyouremail": MessageLookupByLibrary.simpleMessage(
             "We sent a reset link to your email"),
+        "YearWorkGrad": MessageLookupByLibrary.simpleMessage("Year Work Grad"),
+        "YearWorkGradRequired":
+            MessageLookupByLibrary.simpleMessage("Year Work Grad Required"),
         "YourAbsence": MessageLookupByLibrary.simpleMessage("Your Absence"),
         "YourProgress": MessageLookupByLibrary.simpleMessage("Your Progress"),
         "YourSubject": MessageLookupByLibrary.simpleMessage("YourSubject"),

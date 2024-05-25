@@ -57,6 +57,7 @@ class SubjectCubit extends Cubit<SubjectState> {
       emit(SurveyError(error: e.toString()));
     }
   }
+
   List<Map<String, dynamic>> FeedBack = [];
 
   Future<void> FeedBackFetch(String subject) async {
@@ -83,7 +84,9 @@ class SubjectCubit extends Cubit<SubjectState> {
       emit(FeedBackError(error: e.toString()));
     }
   }
+
   List<Map<String, dynamic>> Progress = [];
+
   Future<void> ProgressFetch(String Level) async {
     try {
       emit(ProgressLoaded());
@@ -108,20 +111,20 @@ class SubjectCubit extends Cubit<SubjectState> {
       emit(ProgressError(error: e.toString()));
     }
   }
-  List<Map<String, dynamic>> StudentProgress = [];
+
+  List<Map<String, dynamic>> studentProgress = []; // Declare studentProgress list
 
   Future<void> ProgressFetchStudent(String Email, String Subject) async {
     try {
       emit(ProgressProfileLoaded());
 
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection("Profile")
-          .doc()
           .collection("Progress")
           .where("Subject", isEqualTo: Subject)
-          .get();
+          .where("StudentEmail", isEqualTo: Email)
+          .get(); // Added get() here
 
-      List<Map<String, dynamic>> studentProgress = [];
+      studentProgress.clear();
 
       querySnapshot.docs.forEach((element) {
         studentProgress.add(element.data() as Map<String, dynamic>);
@@ -132,5 +135,19 @@ class SubjectCubit extends Cubit<SubjectState> {
       emit(ProgressProfileError(error: e.toString()));
     }
   }
-
+  Future<void> addGrades(String Subject, String StudentEmail, int Final, int MedtermGrad, int YearWork) async {
+    try {
+      final postCollection = FirebaseFirestore.instance.collection('Progress');
+      await postCollection.add({
+        'StudentEmail': StudentEmail,
+        'Subject': Subject,
+        'Final': Final,
+        'MedtermGrad': MedtermGrad,
+        'YearWork': YearWork
+      });
+      emit(GradeAddedSuccess());
+    } catch (e) {
+      emit(GradeAddedError(error: e.toString()));
+    }
+  }
 }

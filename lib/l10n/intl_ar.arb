@@ -52,8 +52,19 @@
   "NoFeedBaclavailable":"لا توجد تقييمات متاحه",
   "AnonymousStudent": "طالب مجهول",
   "ProgressofStudent":"مستوي الطالب",
-  "ProgressandgradesforthisSubjectisempty": "التقدم والدرجات لهذا الموضوع فارغة"
+  "ProgressandgradesforthisSubjectisempty": "التقدم والدرجات لهذا الموضوع فارغة",
+  "NoStudentavailable":"لا يوجد طالب متاح",
 
-
-
+"Subject":"الماده",
+  "YearWorkGrad": "درجات اعمال السنه",
+  "MedTermGrad": "درجات الميد ترم",
+  "FinalGrad":"درجه الامتحان النهائي",
+  "AddGrade":"اضافه الدرجات",
+  "YearWorkGradRequired": "درجه اعمال السنه مطلوبه",
+  "InvalidYearWorkGrad":"درجه اعمال السنه غير صحيحه",
+  "MedTermGradRequired": "درجه اعمال السنه مطلوبه",
+  "InvalidMedTermGrad": "درجه الميد ترم غير صحيحه",
+"FinalGradRequired": "الدرجه النهائيه مطلوبه",
+  "InvalidFinalGrad": "درجه النهائيه غير صحيحه",
+  "GradeAddedSuccess":"تم اضافه الدرجه بنجاح"
 }

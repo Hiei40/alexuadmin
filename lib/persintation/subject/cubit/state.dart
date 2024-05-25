@@ -64,4 +64,10 @@ class MyProfileSuccefull extends SubjectState {}
 
 class EmptyState extends SubjectState {}
 
+class GradeAddedSuccess extends SubjectState {}
+
+class GradeAddedError extends SubjectState {
+  final String error;
+  GradeAddedError({required this.error});
+}
 // Define HomeError class extending HomeState
