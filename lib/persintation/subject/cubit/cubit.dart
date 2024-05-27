@@ -14,12 +14,9 @@ class SubjectCubit extends Cubit<SubjectState> {
   Future<void> fetchData() async {
     try {
       emit(SubjectLoaded());
-
       CollectionReference home = FirebaseFirestore.instance.collection("SubjectswitTeacher");
       QuerySnapshot snapshot = await home.get();
-
       course.clear();
-
       snapshot.docs.forEach((element) {
         // Explicitly cast element.data() to Map<String, dynamic>
         course.add(Course.fromJson(element.data() as Map<String, dynamic>));
@@ -84,8 +81,43 @@ class SubjectCubit extends Cubit<SubjectState> {
       emit(FeedBackError(error: e.toString()));
     }
   }
-
   List<Map<String, dynamic>> Progress = [];
+  List allIdAbsences=[];
+  getAbsences()async{
+    emit(AbsencesLoadState());
+    await  FirebaseFirestore.instance
+        .collection("Attendance").get().then((value){
+          value.docs.forEach((data){
+            allIdAbsences.add(data.id);
+          });
+    });
+    emit(AbsencesState());
+  }
+  List warningList=[];
+  warning()async{
+    emit(AbsencesLoadState());
+    await  FirebaseFirestore.instance
+        .collection("Attendance").where("warning",isGreaterThan: 2).get().then((value){
+      value.docs.forEach((data){
+        if(data["warning"]>2){
+        warningList.add(data["warning"]);
+        }
+      });
+    });
+    emit(WarningLoadState());
+  }
+  List allIdAbsence=[];
+  getAbsence(id)async{
+    emit(AbsenceLoadState());
+    await  FirebaseFirestore.instance
+        .collection("Attendance").doc(id).collection("myattend").get().then((value){
+      value.docs.forEach((data){
+        allIdAbsences.add(data.id);
+      });
+    });
+    emit(AbsenceState());
+
+  }
 
   Future<void> ProgressFetch(String Level) async {
     try {

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../generated/l10n.dart';
 import 'Take Attendance.dart';
 import 'Your Absence.dart';
+import 'my_absence.dart';
 
 class Attendance extends StatefulWidget {
   const Attendance({super.key});

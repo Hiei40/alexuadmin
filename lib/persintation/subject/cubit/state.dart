@@ -19,6 +19,12 @@ class SubjectError extends SubjectState {
 }
 class SurveyLoaded extends SubjectState {}
 class SurveySuccefull extends SubjectState {}
+class AbsencesState extends SubjectState {}
+class WarningState extends SubjectState {}
+class WarningLoadState extends SubjectState {}
+class AbsencesLoadState extends SubjectState {}
+class AbsenceLoadState extends SubjectState {}
+class AbsenceState extends SubjectState {}
 class SurveyError extends SubjectState {
 
   final String error;
