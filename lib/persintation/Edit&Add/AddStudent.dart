@@ -140,9 +140,10 @@ class AddStudent extends StatelessWidget {
                   ProfileDropDownMenu(
                     title: 'Select Level',
                     items: ['First', 'Second', 'Third', "Fourth"],
-                    selectedValue: 'First',
+                    selectedValue: selectedLevel ?? 'First', // Ensure default value is set
                     onChanged: (String? newValue) {
-                      // Handle the change
+                      // Update selectedLevel when dropdown value changes
+                      selectedLevel = newValue;
                     },
                     validator: (String? value) {
                       if (value == null || value.isEmpty) {
@@ -151,6 +152,9 @@ class AddStudent extends StatelessWidget {
                       return null;
                     },
                   ),
+
+
+
                   ProfileCard(
                     title: S.of(context).Name,
                     body: S.of(context).Name,
@@ -179,49 +183,41 @@ class AddStudent extends StatelessWidget {
                     },
                     Controller: departmentController,
                   ),
-                  ProfileCard(
-                    title: "CGPA",
-                    body: "CGPA",
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "CGPA is required";
-                      } else if (!RegExp(r'^\d+(\.\d+)?$').hasMatch(value)) {
-                        return "CGPA must be a number";
-                      }
-                      return null;
-                    },
-                    Controller: cgpaController,
-                  ),
+
                   SizedBox(height: 50),
                   InkWell(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
-                        BlocProvider.of<EditAddCubit>(context)
-                            .createStudentAccount(
-                          emailController.text,
-                          passwordController.text,
-                          nameController.text,
-                          profileImageUrl ?? '',
-                          departmentController.text,
-                          int.parse(idController.text),
-                          selectedLevel ??
-                              '', // Pass the selectedLevel value here
-                        )
-                            .then((userCredential) {
-                          print({
-                            'name': nameController.text,
-                            'user_type': "Student",
-                            "id": int.parse(idController.text),
-                            'Level': selectedLevel,
-                            "Faceid": "facceID",
-                            'image': profileImageUrl,
-                            'email': emailController.text,
-                            'department': departmentController.text,
+                        if (selectedLevel != null) {
+                          BlocProvider.of<EditAddCubit>(context)
+                              .createStudentAccount(
+                            emailController.text,
+                            passwordController.text,
+                            nameController.text,
+                            profileImageUrl ?? '',
+                            departmentController.text,
+                            int.parse(idController.text),
+                            selectedLevel!, // Use the non-nullable value of selectedLevel
+                          )
+                              .then((userCredential) {
+                            print({
+                              'name': nameController.text,
+                              'user_type': "Student",
+                              "id": int.parse(idController.text),
+                              'Level': selectedLevel, // Use selectedLevel directly
+                              'image': profileImageUrl,
+                              'email': emailController.text,
+                              'department': departmentController.text,
+                            });
+                          }).catchError((error) {
+                            print("Error creating account: $error");
+                            // Handle error if needed
                           });
-                        }).catchError((error) {
-                          print("Error creating account: $error");
-                          // Handle error if needed
-                        });
+                        } else {
+                          // Handle the case where selectedLevel is null
+                          // This could be logging an error or displaying a message to the user
+                          print('Error: selectedLevel is null');
+                        }
                       }
                     },
                     child: Container(
@@ -229,8 +225,7 @@ class AddStudent extends StatelessWidget {
                         color: Color(0xff87CEEB),
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      height:
-                          (75 / height) * MediaQuery.of(context).size.height,
+                      height: (75 / height) * MediaQuery.of(context).size.height,
                       width: (300 / width) * MediaQuery.of(context).size.width,
                       alignment: Alignment.center,
                       child: Text(
@@ -244,6 +239,7 @@ class AddStudent extends StatelessWidget {
                       ),
                     ),
                   ),
+
                 ],
               ),
             ),

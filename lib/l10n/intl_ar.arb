@@ -35,7 +35,7 @@
   "Send":"أرسال",
   "ifthere": "يرجى كتابة ملاحظاتك حول الموضوع أو المحاضر",
   "Progress":"تقدم",
-  "YourAbsence":"الغياب الخاص بك ",
+  "StudentAbsence":"غياب الطلاب ",
   "existingsubjects":"المواد الخاصه بالاستاذ",
   "AddyourAccounment":"برجاء اضافه الاعلان الذي تود اعلانه للطلاب",
   "PleaseWrite": "برجاء كتابه الاعلان الخاص بك",
@@ -66,5 +66,7 @@
   "InvalidMedTermGrad": "درجه الميد ترم غير صحيحه",
 "FinalGradRequired": "الدرجه النهائيه مطلوبه",
   "InvalidFinalGrad": "درجه النهائيه غير صحيحه",
-  "GradeAddedSuccess":"تم اضافه الدرجه بنجاح"
+  "GradeAddedSuccess":"تم اضافه الدرجه بنجاح",
+  "Warning": "التحذيرات"
+
 }

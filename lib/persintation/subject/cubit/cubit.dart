@@ -107,14 +107,10 @@ class SubjectCubit extends Cubit<SubjectState> {
     emit(WarningLoadState());
   }
   List allIdAbsence=[];
-  getAbsence(id)async{
+  getAbsence(String Subject)async{
     emit(AbsenceLoadState());
     await  FirebaseFirestore.instance
-        .collection("Attendance").doc(id).collection("myattend").get().then((value){
-      value.docs.forEach((data){
-        allIdAbsences.add(data.id);
-      });
-    });
+        .collection("Attendance").doc(id).collection("myattend").where("Subject",isEqualTo:Subject);
     emit(AbsenceState());
 
   }
@@ -167,7 +163,7 @@ class SubjectCubit extends Cubit<SubjectState> {
       emit(ProgressProfileError(error: e.toString()));
     }
   }
-  Future<void> addGrades(String Subject, String StudentEmail, int Final, int MedtermGrad, int YearWork) async {
+  Future<void> addGrades(String Subject, String StudentEmail, int Final, int MedtermGrad, int YearWork,int CreditHourForStudent) async {
     try {
       final postCollection = FirebaseFirestore.instance.collection('Progress');
       await postCollection.add({
@@ -175,7 +171,9 @@ class SubjectCubit extends Cubit<SubjectState> {
         'Subject': Subject,
         'Final': Final,
         'MedtermGrad': MedtermGrad,
-        'YearWork': YearWork
+        'YearWork': YearWork,
+        'total':Final+MedtermGrad+YearWork,
+        'CreditHourForStudent':CreditHourForStudent
       });
       emit(GradeAddedSuccess());
     } catch (e) {

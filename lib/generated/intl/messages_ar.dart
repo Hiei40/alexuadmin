@@ -104,18 +104,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "Skip": MessageLookupByLibrary.simpleMessage("تخطي"),
         "Start": MessageLookupByLibrary.simpleMessage("أبدا"),
         "Student": MessageLookupByLibrary.simpleMessage("اضافه الطلاب"),
+        "StudentAbsence": MessageLookupByLibrary.simpleMessage("غياب الطلاب "),
         "Subject": MessageLookupByLibrary.simpleMessage("الماده"),
         "Survey": MessageLookupByLibrary.simpleMessage("استطلاع"),
         "Teacher": MessageLookupByLibrary.simpleMessage("اضافه اساتذه"),
         "TrackyourProgress": MessageLookupByLibrary.simpleMessage(
             "تتبع التقدم المحرز الخاص بالطلاب"),
+        "Warning": MessageLookupByLibrary.simpleMessage("التحذيرات"),
         "Wesentaresetlinktoyouremail": MessageLookupByLibrary.simpleMessage(
             "لقد أرسلنا رابط إعادة التعيين إلى بريدك الإلكتروني"),
         "YearWorkGrad":
             MessageLookupByLibrary.simpleMessage("درجات اعمال السنه"),
         "YearWorkGradRequired":
             MessageLookupByLibrary.simpleMessage("درجه اعمال السنه مطلوبه"),
-        "YourAbsence": MessageLookupByLibrary.simpleMessage("الغياب الخاص بك "),
         "YourProgress":
             MessageLookupByLibrary.simpleMessage("التقدم المحرز الخاص بك"),
         "YourSubject": MessageLookupByLibrary.simpleMessage("المواد الخاصه بك"),

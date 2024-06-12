@@ -4,11 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../generated/l10n.dart';
 import 'Take Attendance.dart';
 import 'Your Absence.dart';
-import 'my_absence.dart';
+import 'StudentAbsence.dart';
 
 class Attendance extends StatefulWidget {
-  const Attendance({super.key});
-
+  const Attendance({super.key, required this.Name});
+final String Name;
   @override
   State<Attendance> createState() => _AttendanceState();
 }
@@ -36,7 +36,7 @@ class _AttendanceState extends State<Attendance> {
             InkWell(
               onTap: () {
 
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => TakeAttendance()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Warning()));
 
 
               },
@@ -52,7 +52,7 @@ class _AttendanceState extends State<Attendance> {
                   children: [
                     Container(
                       child: Text(
-                        S.of(context).Attendance,
+                        S.of(context).Warning,
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.w500,
                           fontSize: 25,
@@ -80,13 +80,13 @@ class _AttendanceState extends State<Attendance> {
                   SizedBox(),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => YourAbsence()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => StudentAbsence(id: '',)));
 
                     },
                       child: Container(
                       // Background color for "Logout" text
                       child: Text(
-                        S.of(context).YourAbsence,
+                        S.of(context).StudentAbsence,
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.w500,
                           fontSize: 25,

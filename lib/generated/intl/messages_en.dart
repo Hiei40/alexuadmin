@@ -107,11 +107,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "Skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "Start": MessageLookupByLibrary.simpleMessage("Start"),
         "Student": MessageLookupByLibrary.simpleMessage("Student"),
+        "StudentAbsence":
+            MessageLookupByLibrary.simpleMessage("Student Absence"),
         "Subject": MessageLookupByLibrary.simpleMessage("Subject"),
         "Survey": MessageLookupByLibrary.simpleMessage("Survey"),
         "Teacher": MessageLookupByLibrary.simpleMessage("Teacher"),
         "TrackyourProgress":
             MessageLookupByLibrary.simpleMessage("Track Progress of Students"),
+        "Warning": MessageLookupByLibrary.simpleMessage("Warning"),
         "Wesentaresetlinktoyouremail": MessageLookupByLibrary.simpleMessage(
             "We sent a reset link to your email"),
         "YearWorkGrad": MessageLookupByLibrary.simpleMessage("Year Work Grad"),

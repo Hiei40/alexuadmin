@@ -29,6 +29,7 @@
   "Attendance": "Attendance",
   "Feedback":"Feedback",
   "Survey":"Survey",
+  "StudentAbsence":"Student Absence",
 "Ifthereisanycomplaint":"If there is any complaint or assistance you would like to ask for, please write it down",
 "Pleasewrite": "Please write your specific complaint or thing you would like help with here",
   "Send":"Send",
@@ -65,5 +66,6 @@
   "InvalidMedTermGrad": "Invalid Med Term Grad",
   "FinalGradRequired":"Final Grad Required",
   "InvalidFinalGrad": "Invalid Final Grad",
-  "GradeAddedSuccess":"GradeAddedSuccess"
+  "GradeAddedSuccess":"GradeAddedSuccess",
+  "Warning": "Warning"
 }
