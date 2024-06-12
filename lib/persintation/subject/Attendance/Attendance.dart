@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../generated/l10n.dart';
+import '../../warning/warning.dart';
 import 'Take Attendance.dart';
 import 'Your Absence.dart';
 import 'StudentAbsence.dart';
 
 class Attendance extends StatefulWidget {
   const Attendance({super.key, required this.Name});
-final String Name;
+  final String Name;
   @override
   State<Attendance> createState() => _AttendanceState();
 }
@@ -35,10 +36,8 @@ class _AttendanceState extends State<Attendance> {
             ),
             InkWell(
               onTap: () {
-
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Warning()));
-
-
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => WarningPage(id: '', name: '',)));
               },
               child: Container(
                 height: MediaQuery.of(context).size.height * .1021375921375921,
@@ -80,10 +79,12 @@ class _AttendanceState extends State<Attendance> {
                   SizedBox(),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => StudentAbsence(id: '',)));
-
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => StudentAbsence(
+                                id: '',
+                              )));
                     },
-                      child: Container(
+                    child: Container(
                       // Background color for "Logout" text
                       child: Text(
                         S.of(context).StudentAbsence,

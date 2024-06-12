@@ -16,7 +16,7 @@ class WarningPage extends StatelessWidget {
         title: Text(""),
       ),
       body: BlocBuilder<SubjectCubit, SubjectState>(builder: (context, state) {
-        return cubit.warningList.isEmpty || state is WarningLoadState
+        return cubit.warningList.isEmpty || state is AbsencesLoadState
             ? Center(
                 child: CircularProgressIndicator(),
               )
@@ -46,7 +46,7 @@ class WarningPage extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.only(left: 20.0, top: 20),
                           child: Text(
-                            "${cubit.warningList[i]}",
+                            "${cubit.warningList[i] }",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 17,

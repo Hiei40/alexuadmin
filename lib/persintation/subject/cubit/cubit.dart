@@ -96,11 +96,13 @@ class SubjectCubit extends Cubit<SubjectState> {
   List warningList=[];
   warning()async{
     emit(AbsencesLoadState());
+
     await  FirebaseFirestore.instance
-        .collection("Attendance").where("warning",isGreaterThan: 2).get().then((value){
+        .collection("Attendance").where("worning",isGreaterThan: 1).get().then((value){
+      warningList.clear();
       value.docs.forEach((data){
-        if(data["warning"]>2){
-        warningList.add(data["warning"]);
+        if(data["worning"]>1){
+        warningList.add(data["Email"]);
         }
       });
     });
@@ -108,9 +110,12 @@ class SubjectCubit extends Cubit<SubjectState> {
   }
   List allIdAbsence=[];
   getAbsence(String Subject)async{
+
     emit(AbsenceLoadState());
+
     await  FirebaseFirestore.instance
         .collection("Attendance").doc(id).collection("myattend").where("Subject",isEqualTo:Subject);
+
     emit(AbsenceState());
 
   }
