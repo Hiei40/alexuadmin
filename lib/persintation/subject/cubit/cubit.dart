@@ -114,7 +114,15 @@ class SubjectCubit extends Cubit<SubjectState> {
     emit(AbsenceLoadState());
 
     await  FirebaseFirestore.instance
-        .collection("Attendance").doc(id).collection("myattend").where("Subject",isEqualTo:Subject);
+        .collectionGroup("Abscence").get().then((value) {
+        allIdAbsence.clear();
+         value.docs.forEach((element) {
+           if(element.data()["Subject"]==Subject)
+           print(element.data());
+           allIdAbsence.add(element.data());
+         });
+
+    });
 
     emit(AbsenceState());
 

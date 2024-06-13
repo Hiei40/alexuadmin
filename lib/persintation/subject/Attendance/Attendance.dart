@@ -81,7 +81,7 @@ class _AttendanceState extends State<Attendance> {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => StudentAbsence(
-                                id: '',
+                                id: '',  Name:widget.Name,
                               )));
                     },
                     child: Container(

@@ -10,14 +10,24 @@ import '../cubit/cubit.dart';
 import '../cubit/state.dart';
 
 class StudentAbsence extends StatelessWidget {
-  const StudentAbsence({Key? key, required this.id}) : super(key: key);
+  const StudentAbsence({Key? key, required this.id, required this.Name}) : super(key: key);
   final String? id;
+final String Name;
 
   @override
   Widget build(BuildContext context) {
 
+    if (id == null) {
+      // Handle null id case gracefully
+      return Scaffold(
+        body: Center(
+          child: Text('ID is null'),
+        ),
+      );
+    }
+
     SubjectCubit cubit = SubjectCubit.get(context);
-    cubit.getAbsence(id!);
+    cubit.getAbsence("Calculus");
     return Scaffold(
       appBar: AppBar(
         title: Text(
