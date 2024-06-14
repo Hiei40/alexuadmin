@@ -11,12 +11,7 @@ import 'package:aws_rekognition_api/rekognition-2016-06-27.dart' as aws;
 
 class EditAddCubit extends Cubit<EditAddState> {
   EditAddCubit() : super(EditAddInitial());
-  final service = aws.Rekognition(
-      region: 'eu-west-1',
-      credentials: aws.AwsClientCredentials(
-          accessKey: "AKIA3FLDYQCRDUEBFL4X",
-          secretKey: "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")
-  );
+
   Future<void> forgetPassword(String email) async {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
@@ -91,30 +86,24 @@ class EditAddCubit extends Cubit<EditAddState> {
       String getimage,
       String department,
       int id,
-      String selectedYear) async {
+
+      String selectedLevel, // Added selectedLevel parameter
+      ) async {
     try {
       // Create user with email and password
       UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
 
       String imageUrl = "";
-      String? faceID = "";
       if (SelectImage != null) {
         String fileName = basename(SelectImage!.path);
         Reference fire = _reference.child('uploads/$fileName');
         UploadTask uploadTask = fire.putFile(SelectImage!);
         TaskSnapshot taskSnapshot = await uploadTask;
         imageUrl = await taskSnapshot.ref.getDownloadURL();
-        var bytes = await SelectImage?.readAsBytes();
-
-        final res = await service.indexFaces(
-          collectionId: "students",
-          image: aws.Image(bytes: bytes),
-        );
-        faceID = res.faceRecords?.first.face?.faceId ?? "";
       }
 
       // Update user profile photo in Firebase Authentication
@@ -136,8 +125,7 @@ class EditAddCubit extends Cubit<EditAddState> {
           'name': name,
           'user_type': "Student",
           "id": id,
-          'Level': selectedYear,
-          "Faceid": faceID,
+          'Level': selectedLevel, // Add 'Level' field here
           'image': imageUrl,
           'email': email,
           'department': department,
@@ -157,6 +145,7 @@ class EditAddCubit extends Cubit<EditAddState> {
       throw e;
     }
   }
+
 
   void clearProfileImage() {
     SelectImage = null;
@@ -187,3 +176,9 @@ class EditAddCubit extends Cubit<EditAddState> {
     return await taskSnapshot.ref.getDownloadURL();
   }
 }
+// final service = aws.Rekognition(
+//     region: 'eu-west-1',
+//     credentials: aws.AwsClientCredentials(
+//         accessKey: "AKIA3FLDYQCRDUEBFL4X",
+//         secretKey: "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")
+// );

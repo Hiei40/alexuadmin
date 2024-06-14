@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../generated/l10n.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-class TakeAttendance extends StatelessWidget {
-  const TakeAttendance({Key? key});
+class Warning extends StatelessWidget {
+  const Warning({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class TakeAttendance extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          S.of(context).Attendance,
+          S.of(context).Warning,
           style: GoogleFonts.inter(
             fontSize: 20,
             fontWeight: FontWeight.w600,

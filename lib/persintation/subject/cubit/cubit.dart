@@ -96,25 +96,34 @@ class SubjectCubit extends Cubit<SubjectState> {
   List warningList=[];
   warning()async{
     emit(AbsencesLoadState());
+
     await  FirebaseFirestore.instance
-        .collection("Attendance").where("warning",isGreaterThan: 2).get().then((value){
+        .collection("Attendance").where("worning",isGreaterThan: 1).get().then((value){
+      warningList.clear();
       value.docs.forEach((data){
-        if(data["warning"]>2){
-        warningList.add(data["warning"]);
+        if(data["worning"]>1){
+        warningList.add(data["Email"]);
         }
       });
     });
     emit(WarningLoadState());
   }
   List allIdAbsence=[];
-  getAbsence(id)async{
+  getAbsence(String Subject)async{
+
     emit(AbsenceLoadState());
+
     await  FirebaseFirestore.instance
-        .collection("Attendance").doc(id).collection("myattend").get().then((value){
-      value.docs.forEach((data){
-        allIdAbsences.add(data.id);
-      });
+        .collectionGroup("Abscence").get().then((value) {
+        allIdAbsence.clear();
+         value.docs.forEach((element) {
+           if(element.data()["Subject"]==Subject)
+           print(element.data());
+           allIdAbsence.add(element.data());
+         });
+
     });
+
     emit(AbsenceState());
 
   }
@@ -167,7 +176,7 @@ class SubjectCubit extends Cubit<SubjectState> {
       emit(ProgressProfileError(error: e.toString()));
     }
   }
-  Future<void> addGrades(String Subject, String StudentEmail, int Final, int MedtermGrad, int YearWork) async {
+  Future<void> addGrades(String Subject, String StudentEmail, int Final, int MedtermGrad, int YearWork,int CreditHourForStudent) async {
     try {
       final postCollection = FirebaseFirestore.instance.collection('Progress');
       await postCollection.add({
@@ -175,7 +184,9 @@ class SubjectCubit extends Cubit<SubjectState> {
         'Subject': Subject,
         'Final': Final,
         'MedtermGrad': MedtermGrad,
-        'YearWork': YearWork
+        'YearWork': YearWork,
+        'total':Final+MedtermGrad+YearWork,
+        'CreditHourForStudent':CreditHourForStudent
       });
       emit(GradeAddedSuccess());
     } catch (e) {

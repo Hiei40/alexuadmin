@@ -360,6 +360,16 @@ class S {
     );
   }
 
+  /// `Student Absence`
+  String get StudentAbsence {
+    return Intl.message(
+      'Student Absence',
+      name: 'StudentAbsence',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `If there is any complaint or assistance you would like to ask for, please write it down`
   String get Ifthereisanycomplaint {
     return Intl.message(
@@ -725,6 +735,16 @@ class S {
     return Intl.message(
       'GradeAddedSuccess',
       name: 'GradeAddedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Warning`
+  String get Warning {
+    return Intl.message(
+      'Warning',
+      name: 'Warning',
       desc: '',
       args: [],
     );
