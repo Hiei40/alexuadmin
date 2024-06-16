@@ -56,16 +56,19 @@ class _ProgressState extends State<Progress> {
                   itemCount: _cubit.Progress.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => ProgressScreen(
-                              email: _cubit.Progress[index]["email"],
-                              subject: widget.subject, Name: _cubit.Progress[index]["name"],
-                            ), // Navigate to ProgressScreen
-                          ),
-                        );
-                      },
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ProgressScreen(
+                                email: _cubit.Progress[index]["email"],
+                                subject: widget.subject,
+                                Name: _cubit.Progress[index]["name"],
+                                Level: widget.level,
+                              ),
+                            ),
+                          );
+                        },
+
                       child: Card(
                         color: Colors.white,
                         child: ListTile(
@@ -92,7 +95,8 @@ class _ProgressState extends State<Progress> {
                         MaterialPageRoute(
                           builder: (context) => ProgressScreen(
                             email: _cubit.Progress[index]["email"],
-                            subject: widget.subject, Name:  _cubit.Progress[index]["name"]
+                            subject: widget.subject, Name:  _cubit.Progress[index]["name"], Level: widget.level,
+
                           ), // Navigate to ProgressScreen
                         ),
                       );

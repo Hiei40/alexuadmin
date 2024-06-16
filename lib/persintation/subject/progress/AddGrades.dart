@@ -7,10 +7,11 @@ import '../cubit/cubit.dart';
 import '../cubit/state.dart';
 
 class AddGrades extends StatelessWidget {
-  AddGrades({super.key, required this.Email, required this.Subject});
+  AddGrades({super.key, required this.Email, required this.Subject, required this.Level});
 
   final String Email;
   final String Subject;
+  final String Level;
   final TextEditingController FinalGrade = TextEditingController();
   final TextEditingController MedGrade = TextEditingController();
   final TextEditingController WorkYear = TextEditingController();
@@ -147,7 +148,7 @@ class AddGrades extends StatelessWidget {
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],  // Only digits
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText:" S.of(context).CreditHour", // Updated label
+                        labelText:" Credit Hour", // Updated label
                         labelStyle: GoogleFonts.inter(
                           fontSize: 20.0,
                           fontWeight: FontWeight.w400,
@@ -181,7 +182,7 @@ class AddGrades extends StatelessWidget {
                           finalGrade,
                           medGrade,
                           workYear,
-                          creditHour, // Corrected variable name
+                          creditHour, Level// Corrected variable name
                         );
                       }
                     },
