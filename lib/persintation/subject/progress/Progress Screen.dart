@@ -8,11 +8,13 @@ import '../cubit/state.dart';
 import 'AddGrades.dart';
 
 class ProgressScreen extends StatelessWidget {
-  const ProgressScreen({Key? key, required this.email, required this.subject, required this.Name})
+  const ProgressScreen({Key? key, required this.email, required this.subject, required this.Name, required this.Level})
       : super(key: key);
+
   final String email;
   final String subject;
   final String Name;
+  final String Level;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class ProgressScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => AddGrades(Email: email, Subject: subject,),
+                          builder: (context) => AddGrades(Email: email, Subject: subject, Level: Level,),
                         ),
                       );
                     },

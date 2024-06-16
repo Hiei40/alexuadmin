@@ -14,7 +14,8 @@ class SubjectCubit extends Cubit<SubjectState> {
   Future<void> fetchData() async {
     try {
       emit(SubjectLoaded());
-      CollectionReference home = FirebaseFirestore.instance.collection("SubjectswitTeacher");
+      CollectionReference home =
+          FirebaseFirestore.instance.collection("SubjectswitTeacher");
       QuerySnapshot snapshot = await home.get();
       course.clear();
       snapshot.docs.forEach((element) {
@@ -62,7 +63,7 @@ class SubjectCubit extends Cubit<SubjectState> {
       emit(FeedBackLoaded());
 
       // Create the query
-      Query<Map<String, dynamic>> FeedBackSurvey= FirebaseFirestore.instance
+      Query<Map<String, dynamic>> FeedBackSurvey = FirebaseFirestore.instance
           .collection("FeedBack")
           .where("NameofSubject", isEqualTo: subject);
 
@@ -81,51 +82,57 @@ class SubjectCubit extends Cubit<SubjectState> {
       emit(FeedBackError(error: e.toString()));
     }
   }
+
   List<Map<String, dynamic>> Progress = [];
-  List allIdAbsences=[];
-  getAbsences()async{
+  List allIdAbsences = [];
+  getAbsences() async {
     emit(AbsencesLoadState());
-    await  FirebaseFirestore.instance
-        .collection("Attendance").get().then((value){
-          value.docs.forEach((data){
-            allIdAbsences.add(data.id);
-          });
+    await FirebaseFirestore.instance
+        .collection("Attendance")
+        .get()
+        .then((value) {
+      value.docs.forEach((data) {
+        allIdAbsences.add(data.id);
+      });
     });
     emit(AbsencesState());
   }
-  List warningList=[];
-  warning()async{
+
+  List warningList = [];
+  warning() async {
     emit(AbsencesLoadState());
 
-    await  FirebaseFirestore.instance
-        .collection("Attendance").where("worning",isGreaterThan: 1).get().then((value){
+    await FirebaseFirestore.instance
+        .collection("Attendance")
+        .where("worning", isGreaterThan: 1)
+        .get()
+        .then((value) {
       warningList.clear();
-      value.docs.forEach((data){
-        if(data["worning"]>1){
-        warningList.add(data["Email"]);
+      value.docs.forEach((data) {
+        if (data["worning"] > 1) {
+          warningList.add(data["Email"]);
         }
       });
     });
     emit(WarningLoadState());
   }
-  List allIdAbsence=[];
-  getAbsence(String Subject)async{
 
+  List allIdAbsence = [];
+  getAbsence(String Subject) async {
     emit(AbsenceLoadState());
 
-    await  FirebaseFirestore.instance
-        .collectionGroup("Abscence").get().then((value) {
-        allIdAbsence.clear();
-         value.docs.forEach((element) {
-           if(element.data()["Subject"]==Subject)
-           print(element.data());
-           allIdAbsence.add(element.data());
-         });
-
+    await FirebaseFirestore.instance
+        .collectionGroup("Abscence")
+        .get()
+        .then((value) {
+      allIdAbsence.clear();
+      value.docs.forEach((element) {
+        if (element.data()["Subject"] == Subject) print(element.data());
+        allIdAbsence.add(element.data());
+      });
     });
 
     emit(AbsenceState());
-
   }
 
   Future<void> ProgressFetch(String Level) async {
@@ -153,7 +160,8 @@ class SubjectCubit extends Cubit<SubjectState> {
     }
   }
 
-  List<Map<String, dynamic>> studentProgress = []; // Declare studentProgress list
+  List<Map<String, dynamic>> studentProgress =
+      []; // Declare studentProgress list
 
   Future<void> ProgressFetchStudent(String Email, String Subject) async {
     try {
@@ -176,7 +184,9 @@ class SubjectCubit extends Cubit<SubjectState> {
       emit(ProgressProfileError(error: e.toString()));
     }
   }
-  Future<void> addGrades(String Subject, String StudentEmail, int Final, int MedtermGrad, int YearWork,int CreditHourForStudent) async {
+
+  Future<void> addGrades(String Subject, String StudentEmail, int Final,
+      int MedtermGrad, int YearWork, int CreditHourForStudent,String Level) async {
     try {
       final postCollection = FirebaseFirestore.instance.collection('Progress');
       await postCollection.add({
@@ -185,8 +195,9 @@ class SubjectCubit extends Cubit<SubjectState> {
         'Final': Final,
         'MedtermGrad': MedtermGrad,
         'YearWork': YearWork,
-        'total':Final+MedtermGrad+YearWork,
-        'CreditHourForStudent':CreditHourForStudent
+        'total': Final + MedtermGrad + YearWork,
+        'CreditHourForStudent': CreditHourForStudent,
+        'Level': Level
       });
       emit(GradeAddedSuccess());
     } catch (e) {
