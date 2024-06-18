@@ -23,7 +23,12 @@ class AbsencesState extends SubjectState {}
 class WarningState extends SubjectState {}
 class WarningLoadState extends SubjectState {}
 class AbsencesLoadState extends SubjectState {}
-class AbsenceLoadState extends SubjectState {}
+class AbsencesSuccfulState extends SubjectState {}
+class AbsencesErrorState extends SubjectState{
+  final String error;
+
+  AbsencesErrorState({required this.error});
+}
 class AbsenceState extends SubjectState {}
 class SurveyError extends SubjectState {
 

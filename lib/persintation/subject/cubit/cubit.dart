@@ -2,6 +2,7 @@ import 'package:alexuadmin/persintation/subject/cubit/state.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../Model/AbsenceModel.dart';
 import '../Model/SubjectModel.dart';
 
 class SubjectCubit extends Cubit<SubjectState> {
@@ -15,7 +16,7 @@ class SubjectCubit extends Cubit<SubjectState> {
     try {
       emit(SubjectLoaded());
       CollectionReference home =
-          FirebaseFirestore.instance.collection("SubjectswitTeacher");
+      FirebaseFirestore.instance.collection("SubjectswitTeacher");
       QuerySnapshot snapshot = await home.get();
       course.clear();
       snapshot.docs.forEach((element) {
@@ -98,28 +99,34 @@ class SubjectCubit extends Cubit<SubjectState> {
     emit(AbsencesState());
   }
 
-  List warningList = [];
-  warning() async {
-    emit(AbsencesLoadState());
+  List<Absence> absence2 = [];
+  Future<void> AbsenceTeacherFetch(String subject) async {
+    try {
+      emit(AbsencesLoadState());
 
-    await FirebaseFirestore.instance
-        .collection("Attendance")
-        .where("worning", isGreaterThan: 1)
-        .get()
-        .then((value) {
-      warningList.clear();
-      value.docs.forEach((data) {
-        if (data["worning"] > 1) {
-          warningList.add(data["Email"]);
-        }
+      // Clear absence list before fetching new data
+      absence2.clear();
+
+      CollectionReference attendanceCollection = FirebaseFirestore.instance.collection("Attendance");
+
+      QuerySnapshot snapshot = await attendanceCollection
+          .where("Subject", isEqualTo: subject)
+          .where("Status", isEqualTo: "Abscence")
+          .get();
+
+      snapshot.docs.forEach((element) {
+        absence2.add(Absence.fromJson(element.data() as Map<String, dynamic>));
       });
-    });
-    emit(WarningLoadState());
+
+      emit(AbsencesSuccfulState());
+    } catch (e) {
+      emit(AbsencesErrorState(error: e.toString()));
+    }
   }
 
   List allIdAbsence = [];
   getAbsence(String Subject) async {
-    emit(AbsenceLoadState());
+    emit(AbsencesLoadState());
 
     await FirebaseFirestore.instance
         .collectionGroup("Abscence")
@@ -161,7 +168,7 @@ class SubjectCubit extends Cubit<SubjectState> {
   }
 
   List<Map<String, dynamic>> studentProgress =
-      []; // Declare studentProgress list
+  []; // Declare studentProgress list
 
   Future<void> ProgressFetchStudent(String Email, String Subject) async {
     try {

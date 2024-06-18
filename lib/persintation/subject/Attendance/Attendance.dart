@@ -37,7 +37,7 @@ class _AttendanceState extends State<Attendance> {
             InkWell(
               onTap: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => WarningPage(id: '', name: '',)));
+                    .push(MaterialPageRoute(builder: (context) => WarningPage(id: '', name: widget.Name,)));
               },
               child: Container(
                 height: MediaQuery.of(context).size.height * .1021375921375921,

@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -67,4 +58,36 @@ class DefaultFirebaseOptions {
     iosClientId: '388681426135-jhf7p9l1vird6bdnrj8l1jnofqv6usfh.apps.googleusercontent.com',
     iosBundleId: 'com.example.alexuadmin',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyAkdLZU07nid-SKuEQlMiVKQJm7RraHzdA',
+    appId: '1:388681426135:web:d2f7f63b19b640e414bc92',
+    messagingSenderId: '388681426135',
+    projectId: 'alexu-a9210',
+    authDomain: 'alexu-a9210.firebaseapp.com',
+    storageBucket: 'alexu-a9210.appspot.com',
+    measurementId: 'G-QWBD3NE23K',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyC6G_K3kbpl_mKKb05WCANpQJAXS-QpYfA',
+    appId: '1:388681426135:ios:6492ddbc23491ee614bc92',
+    messagingSenderId: '388681426135',
+    projectId: 'alexu-a9210',
+    storageBucket: 'alexu-a9210.appspot.com',
+    androidClientId: '388681426135-2v3a9ifh3ffqfhekqsgs4phva4q6gfl7.apps.googleusercontent.com',
+    iosClientId: '388681426135-jhf7p9l1vird6bdnrj8l1jnofqv6usfh.apps.googleusercontent.com',
+    iosBundleId: 'com.example.alexuadmin',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyAkdLZU07nid-SKuEQlMiVKQJm7RraHzdA',
+    appId: '1:388681426135:web:a1e4c797a7062de914bc92',
+    messagingSenderId: '388681426135',
+    projectId: 'alexu-a9210',
+    authDomain: 'alexu-a9210.firebaseapp.com',
+    storageBucket: 'alexu-a9210.appspot.com',
+    measurementId: 'G-WJM05WV117',
+  );
+
 }
