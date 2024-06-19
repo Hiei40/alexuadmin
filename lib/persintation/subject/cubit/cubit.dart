@@ -122,9 +122,7 @@ class SubjectCubit extends Cubit<SubjectState> {
     } catch (e) {
       emit(AbsencesErrorState(error: e.toString()));
     }
-  }
-
-  List allIdAbsence = [];
+  }  List allIdAbsence = [];
   // getAbsence(String Subject) async {
   //   emit(AbsencesLoadState());
   //

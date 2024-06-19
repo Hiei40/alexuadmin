@@ -1,12 +1,8 @@
-import 'dart:ui';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-import '../../../generated/l10n.dart';
 import '../Model/AbsenceModel.dart';
 import '../cubit/cubit.dart';
 import '../cubit/state.dart';
@@ -32,7 +28,7 @@ class StudentAbsence extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          S.of(context).YourAbsence,
+          'Your Absence',
           style: GoogleFonts.inter(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -61,11 +57,11 @@ class StudentAbsence extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) {
                           Absence absence = cubit.absence2[index];
 
-                          // Format the date
-                          String formattedDate = DateFormat('yyyy-MM-dd','en').format(absence.dateOfAbsence.toDate());
+                          // // Format the date
+                          // String formattedDate = DateFormat('yyyy-MM-dd', 'en').format(absence.dateOfAbsence);
 
                           return Text(
-                            "${index + 1}) ${absence.email}, $formattedDate",
+                            "${index + 1}) ${absence.email}, ${absence.dateOfAbsence}",
                             textAlign: TextAlign.start,
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.w700,
