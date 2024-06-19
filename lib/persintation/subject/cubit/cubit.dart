@@ -125,22 +125,22 @@ class SubjectCubit extends Cubit<SubjectState> {
   }
 
   List allIdAbsence = [];
-  getAbsence(String Subject) async {
-    emit(AbsencesLoadState());
-
-    await FirebaseFirestore.instance
-        .collectionGroup("Abscence")
-        .get()
-        .then((value) {
-      allIdAbsence.clear();
-      value.docs.forEach((element) {
-        if (element.data()["Subject"] == Subject) print(element.data());
-        allIdAbsence.add(element.data());
-      });
-    });
-
-    emit(AbsenceState());
-  }
+  // getAbsence(String Subject) async {
+  //   emit(AbsencesLoadState());
+  //
+  //   await FirebaseFirestore.instance
+  //       .collectionGroup("Abscence")
+  //       .get()
+  //       .then((value) {
+  //     allIdAbsence.clear();
+  //     value.docs.forEach((element) {
+  //       if (element.data()["Subject"] == Subject) print(element.data());
+  //       allIdAbsence.add(element.data());
+  //     });
+  //   });
+  //
+  //   emit(AbsenceState());
+  // }
 
   Future<void> ProgressFetch(String Level) async {
     try {
