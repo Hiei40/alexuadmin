@@ -15,7 +15,6 @@ class AddStudent extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController idController = TextEditingController();
-  final TextEditingController cgpaController = TextEditingController();
   final TextEditingController departmentController = TextEditingController();
 
   @override
@@ -38,7 +37,6 @@ class AddStudent extends StatelessWidget {
             emailController.clear();
             passwordController.clear();
             idController.clear();
-            cgpaController.clear();
             departmentController.clear();
             cubit.clearProfileImage(); // Clear profile image in cubi
             ScaffoldMessenger.of(context).showSnackBar(

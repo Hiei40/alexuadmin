@@ -79,6 +79,10 @@ class EditAddCubit extends Cubit<EditAddState> {
     }
   }
 
+
+
+
+
   Future<UserCredential> createStudentAccount(
       String email,
       String password,
