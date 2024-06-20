@@ -55,7 +55,7 @@ class EditAddCubit extends Cubit<EditAddState> {
 
         await FirebaseFirestore.instance
             .collection("Profile")
-            .doc(user!.uid)
+            .doc(FirebaseAuth.instance.currentUser!.uid)
             .set({
           'name': name,
           'user_type': "doctor",
@@ -124,7 +124,7 @@ class EditAddCubit extends Cubit<EditAddState> {
 
         await FirebaseFirestore.instance
             .collection("Profile")
-            .doc(user!.uid)
+            .doc(FirebaseAuth.instance.currentUser!.uid)
             .set({
           'name': name,
           'user_type': "Student",
