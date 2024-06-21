@@ -29,9 +29,7 @@ class SubjectInfo extends StatelessWidget {
         level: Level.toString(),
         subject: name.toString(),
       ),
-      Survey(
-        subject: name.toString(),
-      )
+
     ];
     return Scaffold(
       appBar: AppBar(
