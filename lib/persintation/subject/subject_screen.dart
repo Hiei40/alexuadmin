@@ -37,8 +37,8 @@ cubit.fetchData();
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (c) {
                       return SubjectInfo(
-                        name: course.name, Level: course.level,
-
+                        name: course.name,
+                        Level: course.level,
                       );
                     }));
                   },
@@ -47,27 +47,28 @@ cubit.fetchData();
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          height: 40,
-                        ),
+                        SizedBox(height: 40),
                         Container(
                           alignment: Alignment.center,
                           height: 40,
                           width: 40,
                           decoration: BoxDecoration(
-                              color: ColorManger.dark_container,
-                              shape: BoxShape.circle),
+                            color: ColorManger.dark_container,
+                            shape: BoxShape.circle,
+                          ),
                           child: Text(
-                            "${i + 1}".toString(),
+                            "${i + 1}",
                             style: TextStyle(
                               color: ColorManger.main_color,
                             ),
+                            textAlign: TextAlign.center, // Use TextAlign.center instead of Alignment.center
                           ),
                         ),
-                        SizedBox(
-                          height: 20,
+                        SizedBox(height: 20),
+                        Text(
+                          course.name,
+                          textAlign: TextAlign.center, // Use TextAlign.center instead of Alignment.center
                         ),
-                        Text(course.name),
                       ],
                     ),
                   ),

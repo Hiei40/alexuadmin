@@ -137,8 +137,18 @@ class AddStudent extends StatelessWidget {
                   ),
                   ProfileDropDownMenu(
                     title: 'Select Level',
-                    items: ['First', 'Second', 'Third', "Fourth"],
-                    selectedValue: selectedLevel ?? 'First', // Ensure default value is set
+                    items: [
+                      'First Level – Semester1',
+                      'First Level – Semester2',
+                      'Second Level – Semester 3',
+                      "Second Level – Semester 4",
+                      "Third Level – Semester 5",
+                      "Third Level – Semester 6",
+                      "Fourth Level – Semester 7",
+                      "Fourth Level – Semester 8"
+                    ],
+                    selectedValue: selectedLevel ??
+                        'First Level – Semester1', // Ensure default value is set
                     onChanged: (String? newValue) {
                       // Update selectedLevel when dropdown value changes
                       selectedLevel = newValue;
@@ -150,9 +160,6 @@ class AddStudent extends StatelessWidget {
                       return null;
                     },
                   ),
-
-
-
                   ProfileCard(
                     title: S.of(context).Name,
                     body: S.of(context).Name,
@@ -181,7 +188,6 @@ class AddStudent extends StatelessWidget {
                     },
                     Controller: departmentController,
                   ),
-
                   SizedBox(height: 50),
                   InkWell(
                     onTap: () {
@@ -202,7 +208,8 @@ class AddStudent extends StatelessWidget {
                               'name': nameController.text,
                               'user_type': "Student",
                               "id": int.parse(idController.text),
-                              'Level': selectedLevel, // Use selectedLevel directly
+                              'Level':
+                                  selectedLevel, // Use selectedLevel directly
                               'image': profileImageUrl,
                               'email': emailController.text,
                               'department': departmentController.text,
@@ -223,7 +230,8 @@ class AddStudent extends StatelessWidget {
                         color: Color(0xff87CEEB),
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      height: (75 / height) * MediaQuery.of(context).size.height,
+                      height:
+                          (75 / height) * MediaQuery.of(context).size.height,
                       width: (300 / width) * MediaQuery.of(context).size.width,
                       alignment: Alignment.center,
                       child: Text(
@@ -237,7 +245,6 @@ class AddStudent extends StatelessWidget {
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),

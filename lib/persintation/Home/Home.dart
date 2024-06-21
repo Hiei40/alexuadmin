@@ -21,7 +21,6 @@ class Admin extends StatelessWidget {
       SubjectScreen(),
       AddAnouncment(),
       AddEdit(),
-      Help(),
       Settings(),
     ];
 
@@ -29,7 +28,6 @@ class Admin extends StatelessWidget {
       S.of(context).existingsubjects,
       S.of(context).Announcement,
       S.of(context).Add,
-      S.of(context).Help,
       S.of(context).Settings
     ];
     BlocProvider.of<HomeCubit>(context).fetchData();

@@ -9,13 +9,11 @@ class MainList {
         S.of(context).Attendance,
         S.of(context).Feedback,
         S.of(context).TrackyourProgress,
-        S.of(context).Survey,
       ];
 
   static List imageListSubjectInfo = [
     MainImage.attendance,
     MainImage.feedback,
     MainImage.your_Progress,
-    MainImage.survey,
   ];
 }

@@ -7,7 +7,6 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:path/path.dart';
 import 'edit_add_state.dart';
-import 'package:aws_rekognition_api/rekognition-2016-06-27.dart' as aws;
 
 class EditAddCubit extends Cubit<EditAddState> {
   EditAddCubit() : super(EditAddInitial());
@@ -55,7 +54,7 @@ class EditAddCubit extends Cubit<EditAddState> {
 
         await FirebaseFirestore.instance
             .collection("Profile")
-            .doc(user!.uid)
+            .doc(FirebaseAuth.instance.currentUser!.uid)
             .set({
           'name': name,
           'user_type': "doctor",
@@ -78,11 +77,6 @@ class EditAddCubit extends Cubit<EditAddState> {
       throw e;
     }
   }
-
-
-
-
-
   Future<UserCredential> createStudentAccount(
       String email,
       String password,
@@ -124,7 +118,7 @@ class EditAddCubit extends Cubit<EditAddState> {
 
         await FirebaseFirestore.instance
             .collection("Profile")
-            .doc(user!.uid)
+            .doc(FirebaseAuth.instance.currentUser!.uid)
             .set({
           'name': name,
           'user_type': "Student",
@@ -137,7 +131,6 @@ class EditAddCubit extends Cubit<EditAddState> {
 
         emit(CreateAccountSuccess());
       }
-
       return userCredential; // Return the UserCredential object
     } on FirebaseAuthException catch (e) {
       print('FirebaseAuthException: ${e.code}, ${e.message}');
@@ -149,14 +142,11 @@ class EditAddCubit extends Cubit<EditAddState> {
       throw e;
     }
   }
-
-
   void clearProfileImage() {
     SelectImage = null;
     emit(ProfileImageSelected(
         imageUrl: "")); // Emit a state with an empty URL or null
   }
-
   File? SelectImage;
   Future<void> addProfileImage() async {
     try {
@@ -170,7 +160,6 @@ class EditAddCubit extends Cubit<EditAddState> {
       print('Error adding profile image: $e');
     }
   }
-
   Future<String> uploadImage(File file) async {
     FirebaseStorage storage = FirebaseStorage.instance;
     Reference ref =
