@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
+import '../../../generated/l10n.dart';
 import '../Model/AbsenceModel.dart';
 import '../cubit/cubit.dart';
 import '../cubit/state.dart';
@@ -28,7 +29,7 @@ class StudentAbsence extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Your Absence',
+          S.of(context).StudentAbsence,
           style: GoogleFonts.inter(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -42,39 +43,66 @@ class StudentAbsence extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else {
-            return SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      child: ListView.builder(
-                        itemBuilder: (BuildContext context, int index) {
-                          Absence absence = cubit.absence2[index];
+            // Group absences by email
+            Map<String, List<Absence>> groupedAbsences = {};
 
-                          // // Format the date
-                          // String formattedDate = DateFormat('yyyy-MM-dd', 'en').format(absence.dateOfAbsence);
+            cubit.absence2.forEach((absence) {
+              if (groupedAbsences.containsKey(absence.email)) {
+                groupedAbsences[absence.email]!.add(absence);
+              } else {
+                groupedAbsences[absence.email] = [absence];
+              }
+            });
 
-                          return Text(
-                            "${index + 1}) ${absence.email}, ${absence.dateOfAbsence}",
-                            textAlign: TextAlign.start,
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 20,
-                            ),
-                          );
-                        },
-                        itemCount: cubit.absence2.length,
-                      ),
+            return ListView.builder(
+              itemCount: groupedAbsences.length,
+              itemBuilder: (BuildContext context, int index) {
+                String email = groupedAbsences.keys.elementAt(index);
+                List<Absence> absences = groupedAbsences[email]!;
+
+                return Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Container(
+                    padding: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      color: Color(0xff87CEEB),
+                      borderRadius: BorderRadius.circular(12.0),
                     ),
-                  ],
-                ),
-              ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Student Email: $email",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        ),
+                        SizedBox(height: 10.0),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: absences.map((absence) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Time Of Absence: ${absence.dateOfAbsence}",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                SizedBox(height: 5.0),
+                              ],
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
             );
           }
         },
