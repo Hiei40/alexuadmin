@@ -19,7 +19,7 @@ cubit.fetchData();
     // cubit.MyProfile();
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).YourSubject),
+        title: Text(S.of(context).Subjects),
       ),
       body: BlocBuilder<SubjectCubit, SubjectState>(builder: (context, state) {
         return Padding(

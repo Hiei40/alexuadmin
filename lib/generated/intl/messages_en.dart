@@ -110,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "StudentAbsence":
             MessageLookupByLibrary.simpleMessage("Student Absence"),
         "Subject": MessageLookupByLibrary.simpleMessage("Subject"),
+        "Subjects": MessageLookupByLibrary.simpleMessage("Subjects"),
         "Survey": MessageLookupByLibrary.simpleMessage("Survey"),
         "Teacher": MessageLookupByLibrary.simpleMessage("Teacher"),
         "TrackyourProgress":
@@ -122,7 +123,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Year Work Grad Required"),
         "YourAbsence": MessageLookupByLibrary.simpleMessage("Your Absence"),
         "YourProgress": MessageLookupByLibrary.simpleMessage("Your Progress"),
-        "YourSubject": MessageLookupByLibrary.simpleMessage("YourSubject"),
         "YourSubjects": MessageLookupByLibrary.simpleMessage("Your Subject"),
         "existingsubjects":
             MessageLookupByLibrary.simpleMessage("existing subjects"),

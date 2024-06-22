@@ -280,11 +280,11 @@ class S {
     );
   }
 
-  /// `YourSubject`
-  String get YourSubject {
+  /// `Subjects`
+  String get Subjects {
     return Intl.message(
-      'YourSubject',
-      name: 'YourSubject',
+      'Subjects',
+      name: 'Subjects',
       desc: '',
       args: [],
     );
