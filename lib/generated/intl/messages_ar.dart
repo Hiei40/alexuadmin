@@ -106,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Student": MessageLookupByLibrary.simpleMessage("اضافه الطلاب"),
         "StudentAbsence": MessageLookupByLibrary.simpleMessage("غياب الطلاب "),
         "Subject": MessageLookupByLibrary.simpleMessage("الماده"),
+        "Subjects": MessageLookupByLibrary.simpleMessage("المواد"),
         "Survey": MessageLookupByLibrary.simpleMessage("استطلاع"),
         "Teacher": MessageLookupByLibrary.simpleMessage("اضافه اساتذه"),
         "TrackyourProgress": MessageLookupByLibrary.simpleMessage(
@@ -119,7 +120,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("درجه اعمال السنه مطلوبه"),
         "YourProgress":
             MessageLookupByLibrary.simpleMessage("التقدم المحرز الخاص بك"),
-        "YourSubject": MessageLookupByLibrary.simpleMessage("المواد الخاصه بك"),
         "YourSubjects":
             MessageLookupByLibrary.simpleMessage("المواد الخاصه بك "),
         "existingsubjects":
