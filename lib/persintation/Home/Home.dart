@@ -19,15 +19,15 @@ class Admin extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> screens = [
       SubjectScreen(),
-      AddAnouncment(),
+      // AddAnouncment(),
       AddEdit(),
       Settings(),
     ];
 
     List<String> HomeList = [
       S.of(context).existingsubjects,
-      S.of(context).Announcement,
-      S.of(context).Add,
+      // S.of(context).Announcement,
+       S.of(context).Add,
       S.of(context).Settings
     ];
     BlocProvider.of<HomeCubit>(context).fetchData();

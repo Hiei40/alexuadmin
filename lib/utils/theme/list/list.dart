@@ -7,8 +7,8 @@ class MainList {
 
   static List nameListSubjectInfo(BuildContext context) => [
         S.of(context).Attendance,
-        S.of(context).Feedback,
-        S.of(context).TrackyourProgress,
+        // S.of(context).Feedback,
+        // S.of(context).TrackyourProgress,
       ];
 
   static List imageListSubjectInfo = [

@@ -15,7 +15,7 @@ class HomeCubit extends Cubit<HomeState> {
       CollectionReference Home =
       FirebaseFirestore.instance.collection("HomeAdmin");
       QuerySnapshot HomeData =
-      await Home.orderBy("id", descending: false).get();
+      await Home.orderBy("id", descending: false).where("id",isNotEqualTo:"2").get();
       data.clear();
 
       HomeData.docs.forEach((element) {

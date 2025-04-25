@@ -22,13 +22,13 @@ class SubjectInfo extends StatelessWidget {
       Attendance(
         Name: name.toString(),
       ),
-      Feedbacks(
-        Subject: name.toString(),
-      ),
-      Progress(
-        level: Level.toString(),
-        subject: name.toString(),
-      ),
+      // Feedbacks(
+      //   Subject: name.toString(),
+      // ),
+      // Progress(
+      //   level: Level.toString(),
+      //   subject: name.toString(),
+      // ),
 
     ];
     return Scaffold(
